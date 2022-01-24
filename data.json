@@ -1,0 +1,15 @@
+{
+    "shoes":{
+        "1":{
+            "brand":"SNEAKER COMPANY",
+            "name":"Fall Limited Editoin Sneakers",
+            "description":" fill later",
+            "origionalPrice":250,
+            "discountPercentage":50,
+            "image1":"images/image-product-1-thumbnail.jpg",
+            "image2":"images/image-product-2-thumbnail.jpg",
+            "image3":"images/image-product-3-thumbnail.jpg",
+            "image4":"images/image-product-4-thumbnail.jpg"      
+        }
+    }
+}
