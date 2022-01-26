@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
 
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  
+  <link rel = "stylesheet" type="text/css" href="style.css" media="screen" />
   <title>Frontend Mentor | E-commerce product page</title>
 
   <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
@@ -18,10 +18,12 @@
 
     <header class="header" id="header">
       <div class="drop-down-menu" id="drop-down-menu">
-
+        <a href="#" class="hamburger-icon" id="hambuger-icon">
+          <img class="hamburger" id="hamburger" src="/images/icon-menu.svg" alt="menu icon">
+        </a>
       </div>
       <div class="sneakers" id="sneakers">
-
+        <img class="logo" id="logo" src="/images/logo.svg" alt="logo">
       </div>
       <nav class="menu-text" id="menu-text">
         <ul>
@@ -53,10 +55,15 @@
         </ul>   
       </nav>
       <div class="cart" id="cart">
-
+        <a href="#" class="cart-icon" id="cart-icon">
+          <img src="/images/icon-cart.svg" alt="cart-icon">
+          <span class="item-number">0</span>
+        </a>
       </div>
       <div class="userIcon" id="userIcon">
-
+        <a href="#" class="user" id="user">
+          <img src="/images/image-avatar.png" alt="user">
+        </a>
       </div>
     </header>
 
@@ -109,7 +116,10 @@
   
   <div class="attribution">
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
+    Coded by <a href="#">Sharon Moran</a>.
   </div>
+
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">  </script> 
+  <script  type="text/javascript" src="app.js"></script>
 </body>
 </html>
