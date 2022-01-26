@@ -10,11 +10,17 @@
 	--Black: hsl(0, 0%, 0%); /* 75% oppacity for lightbox background*/
 }
 
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
 	font-family: "Kumbh Sans", sans-serif;
 }
 
-nav{
+/* nav{
     border: 5px;
     border-color: black;
     border-width: 5px;
@@ -40,7 +46,7 @@ section{
     border-color: black;
     border-width: 5px;
     border-style: solid;
-}
+} */
 .header{
     width: 100%;
     display:grid;
@@ -53,8 +59,7 @@ section{
     display: none;
 }
 .user{
-    width: 3rem;
-    height: 3rem;
+    height: 24px;
     border-radius: 50%;
     border: 2px solid transparent;
 }
@@ -87,6 +92,9 @@ section{
     }
     li{
        display: inline; 
+    }
+    .user{
+        height: 50px;
     }
     .page-body{
         width: 100%;
