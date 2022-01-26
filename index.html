@@ -27,37 +27,37 @@
       </div>
       <nav class="menu-text" id="menu-text">
         <ul>
-          <li>
+          <li class="nav-links" id="nav-links">
             <a class="nav-options" id="nav-options">
               Collections
             </a>
           </li>
-          <li>
+          <li class="nav-links" id="nav-links">
             <a class="nav-options" id="nav-options">
               Men
             </a>
           </li>
-          <li>
+          <li class="nav-links" id="nav-links">
             <a class="nav-options" id="nav-options">
               Women
             </a>
           </li>
-          <li>
+          <li class="nav-links" id="nav-links">
             <a class="nav-options" id="nav-options">
               About
             </a>
           </li>
-          <li>
+          <li class="nav-links" id="nav-links">
             <a class="nav-options" id="nav-options">
               Contact
             </a>
           </li>
         </ul>   
       </nav>
-      <div class="cart" id="cart">
-        <a href="#" class="cart-icon" id="cart-icon">
-          <img src="/images/icon-cart.svg" alt="cart-icon">
-          <span class="item-number">0</span>
+      <div class="cart-icon" id="cart-icon">
+        <a href="#" class="cart" id="cart">
+          <img src="images/icon-cart.svg" alt="cart" />
+          <span class="cart-number">0</span>
         </a>
       </div>
       <div class="userIcon" id="userIcon">
@@ -65,38 +65,99 @@
           <img src="/images/image-avatar.png" alt="user">
         </a>
       </div>
+      <div class="cart-window" id="cart-window">
+        <p class="window-title">Cart</p>
+        <div class="cart-info">
+                      <p class="cart-item-empty-text">Your cart is empty.</p>
+          <ul class="cart-items">
+            <li class="cart-item">
+              <div class="cart-item-img">
+                <img src="images/image-product-1-thumbnail.jpg" alt="product-1 thumbnail"/>
+              </div>
+              <div class="item-info">
+                <p class="item-name">insert item name from json</p>
+                <div class="item-amount">
+                  <span class="item-price">insert price from json</span>
+                  <p class="item-qty" id="cart-product-qty">x<span class="item-qty-number">insert quantity</span></p>
+                  <span class="total-price">insert total price</span>
+                </div>
+              </div>
+              <button type="button" id="cart-delete-btn">
+                <img src="images/icon-delete.svg" alt="delete"/>
+              </button>
+            </li>
+          </ul>
+          <button type="button" class="btn btn-checkout">
+            Checkout
+          </button>
+        </div>
+      </div>
     </header>
 
-    <main class="page-body" id="shoe-images">
-      <section class="main-shoe-images" id="main-shoe-images">
-        <div class="main-image" id="main-image">
-          <p>test</p>
-        </div>
-        <div class="gallery" id="gallery">
-          <div class="img-gallery" id="img-gallery">
-            <p>test</p>
+    <main>
+      <div class="page-body" id="page-body">
+        <section class="main-shoe-images" id="main-shoe-images">
+          <div class="main-image" id="main-image">
+            <p>gallery</p>
           </div>
-          <div class="img-gallery" id="img-gallery">
-            <p>test</p>
+          <div class="gallery" id="gallery">
+            <div class="img-gallery" id="img-gallery">
+              <p>img1</p>
+            </div>
+            <div class="img-gallery" id="img-gallery">
+              <p>img2</p>
+            </div>
+            <div class="img-gallery" id="img-gallery">
+              <p>img3</p>
+            </div>
+            <div class="img-gallery" id="img-gallery">
+              <p>img3</p>
+            </div>
           </div>
-          <div class="img-gallery" id="img-gallery">
-            <p>test</p>
-          </div>
-          <div class="img-gallery" id="img-gallery">
-            <p>test</p>
-          </div>
-        </div>
-      </section>
+        </section>
 
       <section class="shoe-info-container">
         <div class="company" id="company">
-
+          <p>company</p>
         </div>
         <div class="shoe-name" id="shoe-name">
-
+          <p>shoename</p>
+        </div>
+        <div class="shoe-description" id="shoe-description">
+          <p>shoe description</p>
         </div>
 
+        <div class="cost-info" id="cost-info">
+          <div class="discount-info" id="discount-info">
+            <div class="discount-price" id="discount-price">
+              <p>discount price</p>
+            </div>
+            <div class="discount-amount" id="discount-amount">
+              <p>discount percentage</p>
+            </div>
+          </div>
+          <div class="original-amount" id="origional-amount">
+            <p>og price</p>
+          </div>
+        </div>
 
+        <div class="shopping-btns" id="shopping-btns">
+          <div class="quantity-info" id="quanity-info">
+            <button type="button" class="minus-btn" id="minus-btn">
+              <img src="/images/icon-minus.svg" alt="minus button">
+            </button>
+            <span class="prod-quanity">insert quant</span>
+            <button type="button" class="plus-btn" id="plus-btn">
+              <img src="/images/icon-plus.svg" alt="plus button">
+            </button>
+          </div>
+          <div class="cart-btn-container" id="cart-btn-container">
+            <button type="button" class="add-to-cart" id="add-to-cart">
+              <img src="/images/icon-cart.svg" alt="cart">
+              Add to cart
+            </button>
+          </div>
+        </div>
       </section>
     </main>
 

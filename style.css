@@ -46,6 +46,8 @@ section{
     display:grid;
     grid-template-columns: auto 1fr auto auto;
     align-items: center;
+    gap: 1.5rem;
+    padding: 1rem;
 }
 .menu-text{
     display: none;
@@ -56,15 +58,44 @@ section{
     border-radius: 50%;
     border: 2px solid transparent;
 }
+.item-number{
+    display: none;
+}
+/*come back to edit this later*/
+.cart-window{
+    display: none;
+}
+.gallery{
+    display: none;
+}
+.cost-info{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.discount-info{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
 
 /*for full sizzed screen*/
-@media  screen and (min-width:1440px) {
+@media  screen and (min-width:1439px) {
     .drop-down-menu{
         display: none;
     }
-
+    .menu-text{
+        display:inline;
+    }
     li{
        display: inline; 
+    }
+    .page-body{
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+    .gallery{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
     }
     
 }
