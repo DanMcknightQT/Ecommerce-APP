@@ -1,0 +1,64 @@
+@import url("https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&family=Outfit:wght@300;400;600&family=Red+Hat+Display:wght@500;700;900&display=swap");
+
+:root {
+	--Orange: hsl(26, 100%, 55%);
+	--Pale-orange: hsl(25, 100%, 94%);
+	--Very-dark-blue: hsl(220, 13%, 13%);
+	--Dark-greyish-blue: hsl(219, 9%, 45%);
+	--Light-greyish-blue: hsl(223, 64%, 98%);
+	--White: hsl(0, 0%, 100%);
+	--Black: hsl(0, 0%, 0%); /* 75% oppacity for lightbox background*/
+}
+
+body {
+	font-family: "Kumbh Sans", sans-serif;
+}
+
+nav{
+    border: 5px;
+    border-color: black;
+    border-width: 5px;
+    border-style: solid;
+}
+
+div{
+    border: 5px;
+    border-color: black;
+    border-width: 5px;
+    border-style: solid;
+}
+
+header{
+    border: 5px;
+    border-color: black;
+    border-width: 5px;
+    border-style: solid;
+}
+
+section{
+    border: 5px;
+    border-color: black;
+    border-width: 5px;
+    border-style: solid;
+}
+.header{
+    width: 100%;
+    display:grid;
+    grid-template-columns: auto 1fr auto auto;
+    align-items: center;
+}
+.menu-text{
+    display: none;
+}
+
+/*for full sizzed screen*/
+@media  screen and (min-width:1440px) {
+    .drop-down-menu{
+        display: none;
+    }
+
+    li{
+       display: inline; 
+    }
+    
+}
