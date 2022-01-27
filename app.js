@@ -62,7 +62,7 @@ const jsonEXT = ".json";
             /* Calculate and display the discounted price*/
             let discountPriceCalculated= shoeData.shoes[0].origionalPrice*(shoeData.shoes[0].discountPercentage/100);
             let discountedPriceBox = `
-                <p class="discounted-price-text" id="discounted-price-text">`+discountPriceCalculated+`</p>
+                <p class="discounted-price-text" id="discounted-price-text">$`+discountPriceCalculated+`</p>
             `;
             $('#discount-price').append(discountedPriceBox);
         },

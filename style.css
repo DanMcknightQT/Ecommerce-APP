@@ -6,6 +6,7 @@
 	--Very-dark-blue: hsl(220, 13%, 13%);
 	--Dark-greyish-blue: hsl(219, 9%, 45%);
 	--Light-greyish-blue: hsl(223, 64%, 98%);
+    --Light-Grey: #b6bcc8;
 	--White: hsl(0, 0%, 100%);
 	--Black: hsl(0, 0%, 0%); /* 75% oppacity for lightbox background*/
 }
@@ -20,15 +21,15 @@ body {
 	font-family: "Kumbh Sans", sans-serif;
 }
 img{
-    border-radius: .75rem;
+    border-radius: .75em;
 }
 .header{
     width: 100%;
     display:grid;
     grid-template-columns: auto 1fr auto auto;
     align-items: center;
-    gap: 1.5rem;
-    padding: 1rem;
+    gap: 1.5em;
+    padding: 1em;
 }
 .menu-text{
     display: none;
@@ -68,14 +69,6 @@ img{
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
-.discount-text{
-
-}
-.original-price-text{
-}
-.price-text{
-    text-decoration-line: line-through ;
-}
 .shoe-info-container{
     padding: 0 2rem;
     display: grid;
@@ -84,9 +77,14 @@ img{
 
 /*for full sizzed screen*/
 @media  screen and (min-width:1439px) {
+    body{
+        margin-left: 1em;
+        margin-right: 1em;
+        margin-top: 1em;
+    }
     .header{
-        padding-left: 3rem;
-        padding-right: 3rem;
+        padding-left: 4em;
+        padding-right: 4em;
     }
     .drop-down-menu{
         display: none;
@@ -96,7 +94,8 @@ img{
     }
     li{
        display: inline; 
-       padding-left: 1rem;
+       padding-left: 1em;
+       font-size: 20px;
     }
     .user{
         height: 50px;
@@ -105,14 +104,14 @@ img{
         width: 100%;
         display: grid;
         grid-template-columns: 1fr 1fr;
-        padding: 3rem;
-        column-gap: 2rem;
+        padding: 3em;
+        column-gap: 2em;
     }
     .main-shoe-images{
         max-width: 100%;
         max-height: 100%;
         display: block;
-        padding: 2rem;
+        padding: 2em;
     }
     .shoe-info-container{
         max-height: 100%;
@@ -122,17 +121,17 @@ img{
     .gallery{
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr;
-        padding: 1rem;
-        padding-left: 2rem;
+        padding: 1em;
+        padding-left: 2em;
     }
     .selected-img{
-        border-radius: 0.75rem;
+        border-radius: 0.75em;
         max-width: 100%;
         max-height: 100%;
         display: block;
     }
     .img-gallery{
-        padding: 1rem;
+        padding: 1em;
     }
     .image1, .image2,.image3, .image4{
         max-height: 90%;
@@ -147,26 +146,45 @@ img{
     .company{
         font-size: 25px;
         font-weight: bold;
-        padding: 5rem 0rem 0rem 0rem;
+        padding: 3em 0em 0em 0em;
     }
     .shoe-name{
         font-size: 60px;
         font-weight: bold;
-        padding: 1rem 0rem 0rem 0rem;
+        padding: 1em 0em 0em 0em;
     }
     .shoe-description{
         font-size: x-large;
-        padding: 3rem 0rem 0rem 0rem;
+        padding: 3em 0em 0em 0em;
     }
     .cost-info{
-        padding: 2rem 0rem 0rem 0rem;
+        padding: 2em 0em 0em 0em;
         display: block;
     }
     .discount-info{
         grid-template-columns: 1fr 3fr;
     }
-    
+    .discount-amount
+    {
+        color: var(--Orange);
+        font-size: 25px;
+        font-weight: bold;
+    }
+    .original-price-text{
+        text-decoration-line: line-through;
+        color: var(--Light-Grey);
+    }
+    .discounted-price-text{
+        font-size: 45px;
+        font-weight: bold;
+    }
+    .shopping-btns{
+        padding: 2em 0em 0em 0em;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 1em;
+    }
     .quantity-info{
-        padding: 5rem 0rem 0rem 0rem;
+        align-items: space-around;
     }
 }
