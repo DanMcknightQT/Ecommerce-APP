@@ -19,34 +19,6 @@
 body {
 	font-family: "Kumbh Sans", sans-serif;
 }
-
-/* nav{
-    border: 5px;
-    border-color: black;
-    border-width: 5px;
-    border-style: solid;
-}
-
-div{
-    border: 5px;
-    border-color: black;
-    border-width: 5px;
-    border-style: solid;
-}
-
-header{
-    border: 5px;
-    border-color: black;
-    border-width: 5px;
-    border-style: solid;
-}
-
-section{
-    border: 5px;
-    border-color: black;
-    border-width: 5px;
-    border-style: solid;
-} */
 .header{
     width: 100%;
     display:grid;
@@ -70,8 +42,26 @@ section{
 .cart-window{
     display: none;
 }
+.page-body{
+    
+}
+.main-shoe-images{
+    width: 100%;
+}
+.main-image{
+    width: 100%;
+}
 .gallery{
     display: none;
+}
+.company{
+    color: var(--Orange);
+}
+.shoe-name{
+    color: var(--Very-dark-blue);
+}
+.shoe-description{
+    color: var(--Dark-greyish-blue);
 }
 .cost-info{
     display: grid;
@@ -81,9 +71,18 @@ section{
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
+.shoe-info-container{
+    padding: 0 2rem;
+    display: grid;
+    place-items: center;
+}
 
 /*for full sizzed screen*/
 @media  screen and (min-width:1439px) {
+    .header{
+        padding-left: 3rem;
+        padding-right: 3rem;
+    }
     .drop-down-menu{
         display: none;
     }
@@ -92,6 +91,7 @@ section{
     }
     li{
        display: inline; 
+       padding-left: 1rem;
     }
     .user{
         height: 50px;
@@ -100,10 +100,29 @@ section{
         width: 100%;
         display: grid;
         grid-template-columns: 1fr 1fr;
+        padding: 6rem;
+    }
+    .main-shoe-images{
+        max-width: 100%;
+        max-height: 100%;
+        display: block;
+    }
+    .shoe-info-container{
+        width: 445px;
     }
     .gallery{
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+    .selected-img{
+        border-radius: 0.75rem;
+        max-width: 100%;
+        max-height: 100%;
+        display: block;
+        
+    }
+    .nav-links{
+        color: var(--Dark-greyish-blue);
     }
     
 }
