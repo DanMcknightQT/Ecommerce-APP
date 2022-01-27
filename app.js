@@ -14,17 +14,17 @@ const jsonEXT = ".json";
 
             /* display images in gallery box*/
             let galleryBox = `
-            <div class="img-gallery" id="img-gallery">
-                <img src="`+shoeData.shoes[0].image1+`" alt="image1">
+            <div class="img-gallery1" id="img-gallery">
+                <img class="image1" id="image1" src="`+shoeData.shoes[0].image1+`" alt="image1">
             </div>
-            <div class="img-gallery" id="img-gallery">
-                <img src="`+shoeData.shoes[0].image2+`" alt="image1">
+            <div class="img-gallery2" id="img-gallery">
+                <img class="image2" id="image2" class="" src="`+shoeData.shoes[0].image2+`" alt="image1">
             </div>
-            <div class="img-gallery" id="img-gallery">
-                <img src="`+shoeData.shoes[0].image3+`" alt="image1">
+            <div class="img-gallery3" id="img-gallery">
+                <img class="image3" id="image3" src="`+shoeData.shoes[0].image3+`" alt="image1">
             </div>
-            <div class="img-gallery" id="img-gallery">
-                <img src="`+shoeData.shoes[0].image4+`" alt="image1">
+            <div class="img-gallery4" id="img-gallery">
+                <img class="image4" id="image3" src="`+shoeData.shoes[0].image4+`" alt="image1">
             </div>
             `;
             $('#gallery').append(galleryBox);
@@ -37,27 +37,30 @@ const jsonEXT = ".json";
 
             /*display shoe name info */
             let shoeNameBox = `
-                <p>`+shoeData.shoes[0].name+`</p>
+                <p class="price-text">`+shoeData.shoes[0].name+`</p>
             `;
             $('#shoe-name').append(shoeNameBox);
 
             /* display shoe description */
             let shoeDescriptionBox = `
-                <p>`+shoeData.shoes[0].description+`</p>
+                <p class="price-text">`+shoeData.shoes[0].description+`</p>
             `;
             $('#shoe-description').append(shoeDescriptionBox);
 
             /*display discount price*/
             let shoeDiscountBox = `
-                <p>`+shoeData.shoes[0].discountPercentage+`%</p>
+                <p class="price-text">`+shoeData.shoes[0].discountPercentage+`%</p>
             `;
             $('#discount-amount').append(shoeDiscountBox);
 
             /*display origional price*/
             let shoeOriginalPriceBox = `
-                <p class="orig-Price">$`+shoeData.shoes[0].origionalPrice+`</p>
+                <p class="price-text">$`+shoeData.shoes[0].origionalPrice+`</p>
             `;
             $('#original-amount').append(shoeOriginalPriceBox);
+
+
+
         },
         error:function(error){
             console.log(error);
