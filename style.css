@@ -153,10 +153,16 @@ img{
     }
     .shoe-description{
         font-size: x-large;
-        padding: 5rem 0rem 0rem 0rem;
+        padding: 4rem 0rem 0rem 0rem;
     }
     .cost-info{
+        padding: 4rem 0rem 0rem 0rem;
+        display: block;
+    }
+    .discount-info{
+        grid-template-columns: 1fr 3fr;
+    }
+    .quantity-info{
         padding: 5rem 0rem 0rem 0rem;
     }
-    .
 }
