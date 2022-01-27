@@ -73,9 +73,9 @@ img{
 }
 .original-price-text{
 }
-.price-text[
+.price-text{
     text-decoration-line: line-through ;
-]
+}
 .shoe-info-container{
     padding: 0 2rem;
     display: grid;
