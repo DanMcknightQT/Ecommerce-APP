@@ -37,30 +37,34 @@ const jsonEXT = ".json";
 
             /*display shoe name info */
             let shoeNameBox = `
-                <p class="price-text">`+shoeData.shoes[0].name+`</p>
+                <p>`+shoeData.shoes[0].name+`</p>
             `;
             $('#shoe-name').append(shoeNameBox);
 
             /* display shoe description */
             let shoeDescriptionBox = `
-                <p class="price-text">`+shoeData.shoes[0].description+`</p>
+                <p>`+shoeData.shoes[0].description+`</p>
             `;
             $('#shoe-description').append(shoeDescriptionBox);
 
             /*display discount price*/
             let shoeDiscountBox = `
-                <p class="price-text">`+shoeData.shoes[0].discountPercentage+`%</p>
+                <p class="discount-text" id="discount-text">`+shoeData.shoes[0].discountPercentage+`%</p>
             `;
             $('#discount-amount').append(shoeDiscountBox);
 
             /*display origional price*/
             let shoeOriginalPriceBox = `
-                <p class="price-text">$`+shoeData.shoes[0].origionalPrice+`</p>
+                <p class="original-price-text" id="original-price-text">$`+shoeData.shoes[0].origionalPrice+`</p>
             `;
             $('#original-amount').append(shoeOriginalPriceBox);
 
-
-
+            /* Calculate and display the discounted price*/
+            let discountPriceCalculated= shoeData.shoes[0].origionalPrice*(shoeData.shoes[0].discountPercentage/100);
+            let discountedPriceBox = `
+                <p class="discounted-price-text" id="discounted-price-text">`+discountPriceCalculated+`</p>
+            `;
+            $('#discount-price').append(discountedPriceBox);
         },
         error:function(error){
             console.log(error);
