@@ -9,6 +9,7 @@ const $AddToCartBtn = $('#add-to-cart');
 /* quantity add and subtract counter */
 let quantity = 0;
 let cartQuantity = 0;
+let price = 0;
 
 (function(){
     
@@ -19,6 +20,8 @@ let cartQuantity = 0;
             url: `${fireBaseURL}${jsonEXT}`,
             success:function(data){
                 let shoeData = {...data};
+
+                    price= shoeData.shoes[0].origionalPrice;
 
                    /* display images in gallery box*/
                     let galleryBox = `
@@ -276,7 +279,6 @@ function openCartWindow() {
         emptyCartElement.className += " hidden";
     }else{
         
-        let price= 125;
         let cartTotal = price*cartQuantity;
         let cartTotalPrice=`
             <p class="cart-total-text" id="cart-total-text">$`+cartTotal+`</p>
