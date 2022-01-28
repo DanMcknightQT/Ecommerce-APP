@@ -93,7 +93,20 @@ const $minusBtn = $('#minus-btn');
                 console.log(error);
             }
         })
+    
+    let mainImageBox =`
+        <img class="selected-img" src="/images/image-product-1.jpg" alt="img">
+        <button class="last-image" id="last-image" onclick="lastSlideImage()">
+            <img class="last-slide-btn" id="last-slide-btn"  src="/images/icon-previous.svg" alt="prev">
+        </button>
+        <button class="next-image" id="next-image" onclick="nextSlideImage()">
+            <img class="next-slide-btn" id="next-slide-btn" src="/images/icon-next.svg" alt="next">
+        </button>`;
+    $('#main-image').append(mainImageBox);
+
     })();
+
+    
 
     $addBtn.click(function(e){
         e.preventDefault();
@@ -109,7 +122,7 @@ const $minusBtn = $('#minus-btn');
             document.getElementById("prod-quantity").innerHTML=quantity;
         }
     })
-
+    
 })();
 
 /*functions for desktopview gallery and main image production*/
@@ -119,6 +132,8 @@ function img1(){
     `;
     $('#main-image').empty();
     $('#main-image').append(largeImgBox1);
+    $('#main-image').append(slideBtns);
+    currentImgMobile = 0;
 }
 function img2(){ 
     let largeImgBox2 =`
@@ -126,6 +141,8 @@ function img2(){
     `;
     $('#main-image').empty();
     $('#main-image').append(largeImgBox2);
+    $('#main-image').append(slideBtns);
+    currentImgMobile = 1;
 }
 function img3(){
     let largeImgBox3 =`
@@ -133,6 +150,8 @@ function img3(){
      `;
     $('#main-image').empty();
     $('#main-image').append(largeImgBox3);
+    $('#main-image').append(slideBtns);
+    currentImgMobile = 2;
 }
 function img4(){
     let largeImgBox4 =`
@@ -140,5 +159,65 @@ function img4(){
     `;
     $('#main-image').empty();
     $('#main-image').append(largeImgBox4);
+    $('#main-image').append(slideBtns);
+    currentImgMobile = 3;
 }
 
+
+/*functions for mobile view button activated slide show*/
+let currentImgMobile = 0;
+let mobileImg1 = `
+    <img class="selected-img" src="/images/image-product-1.jpg" alt="img">`;
+let mobileImg2 = `
+    <img class="selected-img" src="/images/image-product-2.jpg" alt="img">`;
+let mobileImg3 = `
+    <img class="selected-img" src="/images/image-product-3.jpg" alt="img">`;
+let mobileImg4 = `
+    <img class="selected-img" src="/images/image-product-4.jpg" alt="img">`;
+let slideBtns=`
+    <button class="last-image" id="last-image" onclick="lastSlideImage()">
+        <img class="last-slide-btn" id="last-slide-btn"  src="/images/icon-previous.svg" alt="prev">
+    </button>
+    <button class="next-image" id="next-image" onclick="nextSlideImage()">
+        <img class="next-slide-btn" id="next-slide-btn" src="/images/icon-next.svg" alt="next">
+    </button>`;
+function lastSlideImage(){
+    if(currentImgMobile>0){
+        currentImgMobile--;
+    }else{
+        currentImgMobile = 3;
+    }
+    displayMobileImg();
+}
+function nextSlideImage(){
+    if(currentImgMobile<3){
+        currentImgMobile++;
+    } else{
+        currentImgMobile = 0;
+    }
+    displayMobileImg();
+}
+function displayMobileImg(){
+    switch(currentImgMobile){
+        case 0:
+            $('#main-image').empty();
+            $('#main-image').append(mobileImg1);
+            $('#main-image').append(slideBtns);
+            break;
+        case 1:
+            $('#main-image').empty();
+            $('#main-image').append(mobileImg2);
+            $('#main-image').append(slideBtns);
+            break;
+        case 2:
+            $('#main-image').empty();
+            $('#main-image').append(mobileImg3);
+            $('#main-image').append(slideBtns);
+            break;
+        case 3:
+            $('#main-image').empty();
+            $('#main-image').append(mobileImg4);
+            $('#main-image').append(slideBtns);
+            break;
+    }
+}
