@@ -66,20 +66,19 @@ img{
     color: var(--Orange);
     font-size: 4vw;
     font-weight: bold;
-    padding: 1em 0em 0em 0em;
-    text-justify: right;
+    padding: .5em 0em 0em 0em;
 }
 .shoe-name{
     width: 100%;
     color: var(--Very-dark-blue);
-    font-size: 4em;
+    font-size: 8vw;
     font-weight: bold;
-    padding: 1em 0em 0em 0em;
+    padding: .5em 0em 0em 0em;
 }
 .shoe-description{
     color: var(--Dark-greyish-blue);
-    font-size: x-large;
-    padding: 3em 0em 0em 0em;
+    font-size: 4vw;
+    padding: .5em 0em 0em 0em;
 }
 
 .cost-info{
