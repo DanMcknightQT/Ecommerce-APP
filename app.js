@@ -11,6 +11,12 @@ const jsonEXT = ".json";
     /* Buttons */
     const $addBtn = $('#plus-btn');
     const $minusBtn = $('#minus-btn');
+    const $btnImage1 = $('#btn-image1');
+    const $btnImage2 = $('#btn-image2');
+    const $btnImage3 = $('#btn-image3');
+    const $btnImage4 = $('#btn-image4');
+
+    
     /* quantity add and subtract counter */
     let quantity = 0;
 
@@ -39,20 +45,32 @@ const jsonEXT = ".json";
 
                    /* display images in gallery box*/
                     let galleryBox = `
-                        <div class="img-gallery1" id="img-gallery">
-                        <img class="image1" id="image1" src="`+shoeData.shoes[0].image1+`" alt="image1">
-                       </div>
-                        <div class="img-gallery2" id="img-gallery">
-                            <img class="image2" id="image2" class="" src="`+shoeData.shoes[0].image2+`" alt="image1">
+                        <div class="img-gallery1" id="img-gallery1">
+                            <button class="btn-image" id="btn-image1">    
+                                <img class="image1" src="`+shoeData.shoes[0].image1+`" alt="image1">
+                            </button>
                         </div>
-                        <div class="img-gallery3" id="img-gallery">
-                            <img class="image3" id="image3" src="`+shoeData.shoes[0].image3+`" alt="image1">
+                        <div class="img-gallery2" id="img-gallery2">
+                            <button class="btn-image" id="btn-image2">
+                                <img class="image2"src="`+shoeData.shoes[0].image2+`" alt="image1">
+                            </button>    
                         </div>
-                        <div class="img-gallery4" id="img-gallery">
-                            <img class="image4" id="image3" src="`+shoeData.shoes[0].image4+`" alt="image1">
+                        <div class="img-gallery3" id="img-gallery3">
+                            <button class="btn-image" id="btn-image3">
+                                <img class="image3" id="btn-image3" src="`+shoeData.shoes[0].image3+`" alt="image1">
+                            </button>
+                            </div>
+                        <div class="img-gallery4" id="img-gallery4">
+                            <button class="btn-image" id="btn-image4">
+                                <img class="image4" id="btn-image4" src="`+shoeData.shoes[0].image4+`" alt="image1">
+                            </button>    
                         </div>
                     `;
                     $('#gallery').append(galleryBox);
+
+                    let mainImageBox=`
+
+                    `;
 
                     /* display shoe company */
                     let shoeCompanyBox = `
@@ -111,7 +129,6 @@ const jsonEXT = ".json";
         console.log(quantity);
         document.getElementById("prod-quantity").innerHTML=quantity;
     })
-
     $minusBtn.click(function(e){
         e.preventDefault();
 
@@ -119,6 +136,14 @@ const jsonEXT = ".json";
         console.log(quantity);
         document.getElementById("prod-quantity").innerHTML=quantity;
     })
+
+    $btnImage1.click(function(e){
+
+    })
+    $btnImage2.click(function(e){
+
+    })
+    $btnImage3.click(function(e))
 
 })();
 
