@@ -1,6 +1,9 @@
 const fireBaseURL = "https://ecommerce-ap-34f87-default-rtdb.firebaseio.com/";
 const jsonEXT = ".json";
 
+/* quantity add and subtract counter */
+let quantity = 0;
+
 (function(){
     $.ajax({
         type: "GET",
@@ -65,11 +68,19 @@ const jsonEXT = ".json";
                 <p class="discounted-price-text" id="discounted-price-text">$`+discountPriceCalculated+`</p>
             `;
             $('#discount-price').append(discountedPriceBox);
+
+            /*display quantity in shopping-btns container*/
+            let quantityMainBox = `
+                <p class="prod-quantity">`+quantity+`</p>
+            `;
+            $('#quantity-num').append(quantityMainBox);
+
         },
         error:function(error){
             console.log(error);
         }
     })
+
 
 })();
 
