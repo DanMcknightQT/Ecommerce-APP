@@ -19,6 +19,7 @@
 
 body {
 	font-family: "Kumbh Sans", sans-serif;
+    width: 100%;
 }
 img{
     border-radius: .75em;
@@ -46,8 +47,8 @@ img{
 .cart-window{
     display: none;
 }
-.main-image{
-    width: 100%;
+.selected-img{
+    max-width: 100%;
 }
 .gallery{
     display: none;
@@ -121,6 +122,16 @@ img{
         max-height: 100%;
         display: block;
         padding: 2em;
+        justify-content: center;
+    }
+    .main-image{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    .selected-img{
+        display: flex;
+        justify-content: center;
     }
     .shoe-info-container{
         max-height: 100%;
