@@ -139,6 +139,9 @@ img{
         max-height: 100%;
         display: block;
     }
+    .btn-image{
+        border: none;
+    }
     .img-gallery{
         padding: 1em;
     }
