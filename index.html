@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
 
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  
+  <link rel = "stylesheet" type="text/css" href="style.css" media="screen" />
   <title>Frontend Mentor | E-commerce product page</title>
 
   <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
@@ -16,29 +16,185 @@
 </head>
 <body>
 
-  Collections
-  Men
-  Women
-  About
-  Contact
+    <header class="header" id="header">
+      <div class="drop-down-menu" id="drop-down-menu">
+        <a href="#" class="hamburger-icon" id="hambuger-icon" onclick="openNav()">
+          <img class="hamburger" id="hamburger" src="/images/icon-menu.svg" alt="menu icon">
+        </a>
+      </div>
+      <div class="nav-overlay" id="nav-overlay">
+        <div class="nav-overlay-container" id="nav-overlay-container"></div>
+          <div class="nav-overlay-content" id="nav-overlay-content">
+            <button class="nav-close-btn" id="nav-close-btn" onclick="closeNav()">
+              <img class="navCloseBtn" id="navCloseBtn" src="images/icon-close.svg" alt="close">
+            </button>
+            <div class="nav-link-container" id="nav-link-container">
+              <a  class="overlay-links" href="#">Collections</a>
+              <a  class="overlay-links" href="#">Men</a>
+              <a  class="overlay-links" href="#">Women</a>
+              <a  class="overlay-links" href="#">About</a>
+              <a  class="overlay-links" href="#">Contact</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="sneakers" id="sneakers">
+        <img class="logo" id="logo" src="/images/logo.svg" alt="logo">
+      </div>
+      <nav class="menu-text" id="menu-text">
+        <ul class="nav-links" id="nav-links">
+          <li>
+            <a class="nav-options" id="nav-options">
+              Collections
+            </a>
+          </li>
+          <li>
+            <a class="nav-options" id="nav-options">
+              Men
+            </a>
+          </li>
+          <li>
+            <a class="nav-options" id="nav-options">
+              Women
+            </a>
+          </li>
+          <li>
+            <a class="nav-options" id="nav-options">
+              About
+            </a>
+          </li>
+          <li>
+            <a class="nav-options" id="nav-options">
+              Contact
+            </a>
+          </li>
+        </ul>   
+      </nav>
+      <div class="cart-icon" id="cart-icon" onclick="openCartWindow()">
+        <a href="#" class="cart" id="cart">
+          <img src="images/icon-cart.svg" alt="cart" />
+          <span class="cart-number" id="cart-number">0</span>
+        </a>
+      </div>
+      <div class="userIcon" id="userIcon">
+        <a href="#" class="user" id="user">
+          <img class="user" src="/images/image-avatar.png" alt="user">
+        </a>
+      </div>
 
-  Sneaker Company
+      
+    </header>
 
-  Fall Limited Edition Sneakers
+    <main>
+      <div class="page-body" id="page-body">
+        <section class="main-shoe-images" id="main-shoe-images">
+          <div>
+            <div class="main-image" id="main-image">
+              <!--images pulled from desktop and mobile gallery navigation functions-->
+            </div>
+            <div class="center-window">
+              <div class="cart-window hidden" id="cart-window">
+                <div class="cart-title" id="cart-title">
+                  <p class="cart-header" id="cart-header">
+                    <img class="closeCart-btn" id="closeCart-btn" onclick="closeCartWindow()" src="/images/icon-close.svg" alt="close">
+                    Cart
+                  </p>
+                </div>
+                <div class="cart-empty" id="cart-empty">
+                  <!--inserted by app.js-->
+                </div>
+                <div class="cart-info" id="cart-info">
+                  <div class="cart-img" id="cart-img">
+                    <!--thumbnail inserted by app.js-->
+                  </div>
+                  <div class="cart-item-info" id="cart-item-info">
+                    <div class="cart-item-name" id="cart-item-name">
+                      <!--populated by app.jss-->
+                    </div>
+                    <div class="cart-price-container" id="cart-total">
+                      
+                        <div class="cart-price" id="cart-price">
+                          <!--populated by app.js -->
+                        </div>
+                        <div class="cart-qty" id="cart-qty">
+                          <p class="cart-qty-text" id="cart-qty-text">
+                            x<span class="cartQty"id="cartQty"></span>
+                          </p>
+                        </div>
+                        <div class="cart-total" id="cart-total">
+                          <!--inserted by app.js-->
+                        </div>                        
+                    </div>                    
+                  </div>
+                  <div class="cart-delete" id="cart-delete">
+                    <button class="clearCartBtn" id="clearCartBtn" onclick="clearCart()">
+                      <img class="cart-delete-btn" id="cart-delete-btn" src="/images/icon-delete.svg" alt="remove">
+                    </button>
+                  </div>
+                  <div class="cart-checkout" id="cart-checkout">
+                    <button class="cart-checkout-btn" id="cart-checkout-btn">
+                      Checkout
+                    </button>
+                  </div>
+                </div>
+              </div>
+              </div>
+            </div>
+          <div class="gallery" id="gallery">
+            <!--app.js GET-->
+          </div>
+        </section>
 
-  These low-profile sneakers are your perfect casual wear companion. Featuring a 
-  durable rubber outer sole, they’ll withstand everything the weather can offer.
+        <section class="shoe-info-container">
+          <div class="company" id="company">
 
-  $125.00
-  50%
-  $250.00
+          </div>
+          <div class="shoe-name" id="shoe-name">
 
-  0
-  Add to cart
-  
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
-  </div>
+          </div>
+          <div class="shoe-description" id="shoe-description">
+      
+          </div>
+
+          <div class="cost-info" id="cost-info">
+            <div class="discount-info" id="discount-info">
+              <div class="discount-price" id="discount-price">
+                <!--app.js GET-->
+              </div>
+              <div class="discount-amount" id="discount-amount">
+                <!--app.js GET-->
+              </div>
+            </div>
+            <div class="original-amount" id="original-amount">
+              <!--app.js GET-->
+            </div>
+          </div>
+
+          <div class="shopping-btns" id="shopping-btns">
+            <div class="quantity-info" id="quanity-info">
+              <button type="button" class="quantity-btn" id="minus-btn">
+                <img src="/images/icon-minus.svg" alt="minus button">
+              </button>
+              <div class="quantity-num" id="quantity-num">
+                <!-- app.js GET calling quantity function-->
+              </div>
+                <button type="button" class="quantity-btn" id="plus-btn">
+                <img src="/images/icon-plus.svg" alt="plus button">
+              </button>
+            </div>
+
+            <div class="cart-btn-container" id="cart-btn-container">
+              <button type="button" class="add-to-cart" id="add-to-cart">
+                <img src="/images/icon-cart.svg" alt="cart">
+                Add to cart
+              </button>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">  </script> 
+  <script  type="text/javascript" src="app.js"></script>
 </body>
 </html>

@@ -1,0 +1,1434 @@
+
+--- HOW TO SET UP OBJECT OF OBJECTS ---
+
+{
+    "shoes":{
+        "1":{
+            "brand":"SNEAKER COMPANY",
+            "name":"Fall Limited Editoin Sneakers",
+            "description":" fill later",
+            "origionalPrice":250,
+            "discountPercentage":50,
+            "image1":"images/image-product-1-thumbnail.jpg",
+            "image2":"images/image-product-2-thumbnail.jpg",
+            "image3":"images/image-product-3-thumbnail.jpg",
+            "image4":"images/image-product-4-thumbnail.jpg"      
+        },
+        "2":{
+            "brand":"SNEAKER COMPANY",
+            "name":"Fall Limited Editoin Sneakers",
+            "description":" fill later",
+            "origionalPrice":250,
+            "discountPercentage":50,
+            "image1":"images/image-product-1-thumbnail.jpg",
+            "image2":"images/image-product-2-thumbnail.jpg",
+            "image3":"images/image-product-3-thumbnail.jpg",
+            "image4":"images/image-product-4-thumbnail.jpg"      
+        }
+    }
+}
+
+---NEW WAY TO WRITE THE HTML ELEMENTS IN THE JAVASCRIPT FILE USING BACKTICKS---
+	*the one on top is using backticks*
+	*the bottom is using normal string interpolation(the long way)*
+
+let userBox2 = 
+    `<div class = 'text-box'style = 'border: 1px solid black; margin-top: 5px' >
+    <p>${userData[user].firstName}${userData[user].lastName}</p>
+    <p>${message[text].post}</p> 
+    <p>${message[text].time}</p> 
+    <button id = 'tweetHolder'onclick = 'deleteCb'> DELETE </button> 
+    </div>`
+    
+
+let userBox2 = 
+    "<div class='text-box' style='border: 1px solid black; margin-top: 5px'>" +
+    "<p>" + userData[user].firstName + " " + userData[user].lastName +
+   "</p>" + "<p>" + message[text].post + "</p>" +
+    "<p>" + message[text].time + "</p>"+ "<button id='tweetHolder' onclick='deleteOption(this.id)'>" + "DELETE"+"</button>" + "</div>"
+
+--HOW TO ITERATE THROUGH SHOES IN ECOMMERCE-APP FRONTEND MENTOR---
+
+		//success:function(data){
+                //console.log(data);
+                //let shoeData = {...data};
+                //console.log(shoeData.shoes);
+                //console.log(shoeData.shoes[0].brand);
+
+		// iterating through the data 
+                //Object.values(shoeData).forEach(shoe=>{
+                //     console.log(shoe, shoeData.shoe,"logging one shoe at a time");
+                //     Object.values(shoe).forEach(value =>{
+                //         if(currentshoe==shoe){
+                //             console.log(currentshoe); 
+                //             console.log(value.brand, "logging each brand");
+                //         }
+                //     })   
+                // });
+
+
+---CART DROP DOWN---
+//Functions to open and close cart window
+function openCartWindow() {
+    let cartWindowelement = document.getElementById('cart-window');
+    cartWindowelement.classList.remove('hidden');
+    
+    console.log(cartQuantity, "cart qty");
+    //populating cart window information
+    if(cartQuantity==0){     
+        let emptyCart = `
+            <p class="empty-text">Your cart is empty.</p>
+        `;
+        $('#cart-empty').empty();
+        $('#cart-empty').append(emptyCart);
+
+        let cartElement=document.getElementById("cart-info");
+        cartElement.className += " hidden";
+        let emptyCartElement=document.getElementById("cart-checkout");
+        emptyCartElement.className += " hidden";
+    }else{
+        let price=125;
+        let qty= cartQuantity;
+        let cartThumbnail=`
+        <img class="cart-img-thumbnail" src="/images/image-product-1-thumbnail.jpg" alt="img">
+        `;
+        $('cart-img-thumbnail').empty();
+        $('#cart-img').append(cartThumbnail);
+
+        let itemName=`
+            <p class="cart-item-name-text" id="cart-item-name-text">Fall Limited Edition Sneakers</p>
+        `;
+        $('cart-item-name-text').empty();
+        $('#cart-item-name').append(itemName);
+
+        let itemPrice=`
+            <p class="cart-price-text" id="cart-item-name-text">$`+price+`</p>
+        `;
+        $('cart-price-text').empty();
+        $('#cart-price').append(itemPrice);
+
+        let cartTotal = price*cartQuantity;
+        let cartTotalPrice=`
+            <p class="cart-total-text" id="cart-total-text">$`+cartTotal+`</p>
+        `;
+        $('cart-total-text').empty();
+        $('#cart-total').append(cartTotalPrice);
+        
+    }
+
+} 
+function closeCartWindow() {
+    let cartWindowelement = document.getElementById('cart-window');
+    cartWindowelement.className += (' hidden');
+}
+
+
+
+
+--app.js
+const fireBaseURL = "https://ecommerce-ap-34f87-default-rtdb.firebaseio.com/";
+const jsonEXT = ".json";
+
+/* Buttons */
+const $addBtn = $('#plus-btn');
+const $minusBtn = $('#minus-btn');
+const $AddToCartBtn = $('#add-to-cart');
+
+/* quantity add and subtract counter */
+let quantity = 0;
+let cartQuantity = 0;
+let price = 0;
+
+(function(){
+    
+
+    (function(){
+        $.ajax({
+            type: "GET",
+            url: `${fireBaseURL}${jsonEXT}`,
+            success:function(data){
+                let shoeData = {...data};
+
+                    price= shoeData.shoes[0].origionalPrice;
+
+                   /* display images in gallery box*/
+                    let galleryBox = `
+                        <div class="img-gallery1" id="img-gallery1">
+                            <button class="btn-image" id="btn-image1" onclick="img1()">    
+                                <img class="image1" src="`+shoeData.shoes[0].image1+`" alt="image1">
+                            </button>
+                        </div>
+                        <div class="img-gallery2" id="img-gallery2">
+                            <button class="btn-image" id="btn-image2" onclick="img2()">
+                                <img class="image2"src="`+shoeData.shoes[0].image2+`" alt="image1">
+                            </button>    
+                        </div>
+                        <div class="img-gallery3" id="img-gallery3">
+                            <button class="btn-image" id="btn-image3" onclick="img3()">
+                                <img class="image3" id="btn-image3" src="`+shoeData.shoes[0].image3+`" alt="image1">
+                            </button>
+                            </div>
+                        <div class="img-gallery4" id="img-gallery4">
+                            <button class="btn-image" id="btn-image4" onclick="img4()">
+                                <img class="image4" id="btn-image4" src="`+shoeData.shoes[0].image4+`" alt="image1">
+                            </button>    
+                        </div>
+                    `;
+                    $('#gallery').append(galleryBox);
+
+
+                    /* display shoe company */
+                    let shoeCompanyBox = `
+                        <p>`+shoeData.shoes[0].brand+`</p>
+                    `;
+                    $('#company').append(shoeCompanyBox);
+
+                    /*display shoe name info */
+                    let shoeNameBox = `
+                        <p id="name">`+shoeData.shoes[0].name+`</p>
+                    `;
+                    $('#shoe-name').append(shoeNameBox);
+
+                    /* display shoe description */
+                    let shoeDescriptionBox = `
+                        <p>`+shoeData.shoes[0].description+`</p>
+                    `;
+                    $('#shoe-description').append(shoeDescriptionBox);
+
+                    /*display discount price*/
+                    let shoeDiscountBox = `
+                        <p class="discount-text" id="discount-text">`+shoeData.shoes[0].discountPercentage+`%</p>
+                    `;
+                    $('#discount-amount').append(shoeDiscountBox);
+
+                    /*display origional price*/
+                    let shoeOriginalPriceBox = `
+                        <p class="original-price-text" id="original-price-text">$`+shoeData.shoes[0].origionalPrice+`</p>
+                    `;
+                    $('#original-amount').append(shoeOriginalPriceBox);
+
+                    /* Calculate and display the discounted price*/
+                    let discountPriceCalculated= shoeData.shoes[0].origionalPrice*(shoeData.shoes[0].discountPercentage/100);
+                    let discountedPriceBox = `
+                        <p class="discounted-price-text" id="discounted-price-text">$`+discountPriceCalculated+`</p>
+                    `;
+                    $('#discount-price').append(discountedPriceBox);
+
+                    /*display quantity in shopping-btns container*/
+                    let quantityMainBox = `
+                        <p class="prod-quantity" id="prod-quantity">`+0+`</p>
+                    `;
+                    $('#quantity-num').append(quantityMainBox);
+
+                    /* cart window*/
+                    let cartThumbnail=`
+                    <img class="cart-img-thumbnail" src="/images/image-product-1-thumbnail.jpg" alt="img">
+                    `;
+                    $('#cart-img').append(cartThumbnail);
+
+                    let itemName=`
+                        <p class="cart-item-name-text" id="cart-item-name-text">`+shoeData.shoes[0].name+`</p>
+                    `;
+                    $('#cart-item-name').append(itemName);
+
+                    let itemPrice=`
+                        <p class="cart-price-text" id="cart-price-text">$`+discountPriceCalculated+`</p>
+                    `;
+                    $('#cart-price').append(itemPrice);
+
+                    
+            },
+            error:function(error){
+                console.log(error);
+            }
+        })
+    
+    let mainImageBox =`
+        <img class="selected-img" src="/images/image-product-1.jpg" alt="img">
+        <button class="last-image" id="last-image" onclick="lastSlideImage()">
+            <img class="last-slide-btn" id="last-slide-btn"  src="/images/icon-previous.svg" alt="prev">
+        </button>
+        <button class="next-image" id="next-image" onclick="nextSlideImage()">
+            <img class="next-slide-btn" id="next-slide-btn" src="/images/icon-next.svg" alt="next">
+        </button>`;
+    $('#main-image').append(mainImageBox);
+
+    })();
+
+    $addBtn.click(function(e){
+        e.preventDefault();
+        quantity++;
+        console.log(quantity);
+        document.getElementById("prod-quantity").innerHTML=quantity;
+    })
+    $minusBtn.click(function(e){
+        e.preventDefault();
+        if(quantity>=1){
+            quantity--;
+            document.getElementById("prod-quantity").innerHTML=quantity;
+        }
+    })
+    $AddToCartBtn.click(function(e){
+        e.preventDefault();
+        cartQuantity+=quantity;
+        //function to reset product quantity in shopping buttons after add to cart is clicked
+        function qtyReset(){
+            quantity=0;
+            document.getElementById("prod-quantity").innerHTML=quantity;
+        }
+        qtyReset();
+        document.getElementById("cartQty").innerHTML=cartQuantity;
+        document.getElementById("cart-number").innerHTML=cartQuantity; 
+    })
+
+})();
+
+/*functions for desktopview gallery and main image production*/
+function img1(){   
+    let largeImgBox1 =`
+        <img class="selected-img" src="/images/image-product-1.jpg" alt="img">
+    `;
+    $('#main-image').empty();
+    $('#main-image').append(largeImgBox1);
+    $('#main-image').append(slideBtns);
+    currentImgMobile = 0;
+}
+function img2(){ 
+    let largeImgBox2 =`
+        <img class="selected-img" src="/images/image-product-2.jpg" alt="img">
+    `;
+    $('#main-image').empty();
+    $('#main-image').append(largeImgBox2);
+    $('#main-image').append(slideBtns);
+    currentImgMobile = 1;
+}
+function img3(){
+    let largeImgBox3 =`
+        <img class="selected-img" src="/images/image-product-3.jpg" alt="img">
+     `;
+    $('#main-image').empty();
+    $('#main-image').append(largeImgBox3);
+    $('#main-image').append(slideBtns);
+    currentImgMobile = 2;
+}
+function img4(){
+    let largeImgBox4 =`
+        <img class="selected-img" src="/images/image-product-4.jpg" alt="img">
+    `;
+    $('#main-image').empty();
+    $('#main-image').append(largeImgBox4);
+    $('#main-image').append(slideBtns);
+    currentImgMobile = 3;
+}
+
+
+/*functions for mobile view button activated slide show*/
+let currentImgMobile = 0;
+let mobileImg1 = `
+    <img class="selected-img" src="/images/image-product-1.jpg" alt="img">`;
+let mobileImg2 = `
+    <img class="selected-img" src="/images/image-product-2.jpg" alt="img">`;
+let mobileImg3 = `
+    <img class="selected-img" src="/images/image-product-3.jpg" alt="img">`;
+let mobileImg4 = `
+    <img class="selected-img" src="/images/image-product-4.jpg" alt="img">`;
+let slideBtns=`
+    <button class="last-image" id="last-image" onclick="lastSlideImage()">
+        <img class="last-slide-btn" id="last-slide-btn"  src="/images/icon-previous.svg" alt="prev">
+    </button>
+    <button class="next-image" id="next-image" onclick="nextSlideImage()">
+        <img class="next-slide-btn" id="next-slide-btn" src="/images/icon-next.svg" alt="next">
+    </button>`;
+function lastSlideImage(){
+    if(currentImgMobile>0){
+        currentImgMobile--;
+    }else{
+        currentImgMobile = 3;
+    }
+    displayMobileImg();
+}
+function nextSlideImage(){
+    if(currentImgMobile<3){
+        currentImgMobile++;
+    } else{
+        currentImgMobile = 0;
+    }
+    displayMobileImg();
+}
+function displayMobileImg(){
+    switch(currentImgMobile){
+        case 0:
+            $('#main-image').empty();
+            $('#main-image').append(mobileImg1);
+            $('#main-image').append(slideBtns);
+            break;
+        case 1:
+            $('#main-image').empty();
+            $('#main-image').append(mobileImg2);
+            $('#main-image').append(slideBtns);
+            break;
+        case 2:
+            $('#main-image').empty();
+            $('#main-image').append(mobileImg3);
+            $('#main-image').append(slideBtns);
+            break;
+        case 3:
+            $('#main-image').empty();
+            $('#main-image').append(mobileImg4);
+            $('#main-image').append(slideBtns);
+            break;
+    }
+}
+
+// Functions to open and close navigation bar drop down menu overlay
+function openNav() {
+    document.getElementById("nav-overlay").style.width = "100%";
+} 
+function closeNav() {
+    document.getElementById("nav-overlay").style.width = "0%";
+}
+
+//Functions to open and close cart window
+function openCartWindow() {
+    document.getElementById("cart-window").style.width = "100%";
+    let cartWindowelement = document.getElementById('cart-window');
+    cartWindowelement.classList.remove('hidden');
+    
+    console.log(cartQuantity, "cart qty");
+    //populating cart window information
+    if(cartQuantity==0){     
+        let emptyCart = `
+            <p class="empty-text">Your cart is empty.</p>
+        `;
+        $('#cart-empty').empty();
+        $('#cart-empty').append(emptyCart);
+
+        let cartElement=document.getElementById("cart-info");
+        cartElement.className += " hidden";
+        let emptyCartElement=document.getElementById("cart-checkout");
+        emptyCartElement.className += " hidden";
+    }else{
+        let cartTotal = price*cartQuantity;
+        let cartTotalPrice=`
+            <p class="cart-total-text" id="cart-total-text">$`+cartTotal+`</p>
+        `;
+        $('#cart-total').append(cartTotalPrice);
+    }
+} 
+function closeCartWindow() {
+    document.getElementById("cart-window").style.width = "0%";
+    let cartWindowelement = document.getElementById('cart-window');
+    cartWindowelement.className += (' hidden');
+}
+
+//Functions to open and close desktop view lightbox
+function openLightBox() {
+    document.getElementById("lightBox").style.width = "100%";
+}
+function closeLightBox() {
+    document.getElementById("lightBox").style.width = "0%";
+}
+
+function clearCart(){
+    cartQuantity = 0;
+    console.log(cartQuantity);
+    closeCartWindow();
+}
+
+
+
+--html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel = "stylesheet" type="text/css" href="style.css" media="screen" />
+  <title>Frontend Mentor | E-commerce product page</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+  </style>
+</head>
+<body>
+
+    <header class="header" id="header">
+      <div class="drop-down-menu" id="drop-down-menu">
+        <a href="#" class="hamburger-icon" id="hambuger-icon" onclick="openNav()">
+          <img class="hamburger" id="hamburger" src="/images/icon-menu.svg" alt="menu icon">
+        </a>
+      </div>
+      <div class="nav-overlay" id="nav-overlay">
+        <div class="nav-overlay-container" id="nav-overlay-container"></div>
+          <div class="nav-overlay-content" id="nav-overlay-content">
+            <button class="nav-close-btn" id="nav-close-btn" onclick="closeNav()">
+              <img class="navCloseBtn" id="navCloseBtn" src="images/icon-close.svg" alt="close">
+            </button>
+            <div class="nav-link-container" id="nav-link-container">
+              <a  class="overlay-links" href="#">Collections</a>
+              <a  class="overlay-links" href="#">Men</a>
+              <a  class="overlay-links" href="#">Women</a>
+              <a  class="overlay-links" href="#">About</a>
+              <a  class="overlay-links" href="#">Contact</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="sneakers" id="sneakers">
+        <img class="logo" id="logo" src="/images/logo.svg" alt="logo">
+      </div>
+      <nav class="menu-text" id="menu-text">
+        <ul class="nav-links" id="nav-links">
+          <li>
+            <a class="nav-options" id="nav-options">
+              Collections
+            </a>
+          </li>
+          <li>
+            <a class="nav-options" id="nav-options">
+              Men
+            </a>
+          </li>
+          <li>
+            <a class="nav-options" id="nav-options">
+              Women
+            </a>
+          </li>
+          <li>
+            <a class="nav-options" id="nav-options">
+              About
+            </a>
+          </li>
+          <li>
+            <a class="nav-options" id="nav-options">
+              Contact
+            </a>
+          </li>
+        </ul>   
+      </nav>
+      <div class="cart-icon" id="cart-icon" onclick="openCartWindow()">
+        <a href="#" class="cart" id="cart">
+          <img src="images/icon-cart.svg" alt="cart" />
+          <span class="cart-number" id="cart-number">0</span>
+        </a>
+      </div>
+      <div class="userIcon" id="userIcon">
+        <a href="#" class="user" id="user">
+          <img class="user" src="/images/image-avatar.png" alt="user">
+        </a>
+      </div>
+
+      
+    </header>
+
+    <main>
+      <div class="page-body" id="page-body">
+        <section class="main-shoe-images" id="main-shoe-images">
+            <div class="main-image" id="main-image">
+              <!--images pulled from desktop and mobile gallery navigation functions-->
+            </div>
+            <div class="center-window">
+              <div class="cart-window hidden" id="cart-window">
+                <div class="cart-title" id="cart-title">
+                  <p class="cart-header" id="cart-header">
+                    <img class="closeCart-btn" id="closeCart-btn" onclick="closeCartWindow()" src="/images/icon-close.svg" alt="close">
+                    Cart
+                  </p>
+                </div>
+                <div class="cart-empty" id="cart-empty">
+                  <!--inserted by app.js-->
+                </div>
+                <div class="cart-info" id="cart-info">
+                  <div class="cart-img" id="cart-img">
+                    <!--thumbnail inserted by app.js-->
+                  </div>
+                  <div class="cart-item-info" id="cart-item-info">
+                    <div class="cart-item-name" id="cart-item-name">
+                      <!--populated by app.jss-->
+                    </div>
+                    <div class="cart-price-container" id="cart-total">
+                      
+                        <div class="cart-price" id="cart-price">
+                          <!--populated by app.js -->
+                        </div>
+                        <div class="cart-qty" id="cart-qty">
+                          <p class="cart-qty-text" id="cart-qty-text">
+                            x<span class="cartQty"id="cartQty"></span>
+                          </p>
+                        </div>
+                        <div class="cart-total" id="cart-total">
+                          <!--inserted by app.js-->
+                        </div>                        
+                    </div>                    
+                  </div>
+                  <div class="cart-delete" id="cart-delete">
+                    <button class="clearCartBtn" id="clearCartBtn" onclick="clearCart()">
+                      <img class="cart-delete-btn" id="cart-delete-btn" src="/images/icon-delete.svg" alt="remove">
+                    </button>
+                  </div>
+                  <div class="cart-checkout" id="cart-checkout">
+                    <button class="cart-checkout-btn" id="cart-checkout-btn">
+                      Checkout
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+    
+          <div class="gallery" id="gallery">
+            <!--app.js GET-->
+          </div>
+        </section>
+
+        <section class="shoe-info-container">
+          <div class="company" id="company">
+
+          </div>
+          <div class="shoe-name" id="shoe-name">
+
+          </div>
+          <div class="shoe-description" id="shoe-description">
+      
+          </div>
+
+          <div class="cost-info" id="cost-info">
+            <div class="discount-info" id="discount-info">
+              <div class="discount-price" id="discount-price">
+                <!--app.js GET-->
+              </div>
+              <div class="discount-amount" id="discount-amount">
+                <!--app.js GET-->
+              </div>
+            </div>
+            <div class="original-amount" id="original-amount">
+              <!--app.js GET-->
+            </div>
+          </div>
+
+          <div class="shopping-btns" id="shopping-btns">
+            <div class="quantity-info" id="quanity-info">
+              <button type="button" class="quantity-btn" id="minus-btn">
+                <img src="/images/icon-minus.svg" alt="minus button">
+              </button>
+              <div class="quantity-num" id="quantity-num">
+                <!-- app.js GET calling quantity function-->
+              </div>
+                <button type="button" class="quantity-btn" id="plus-btn">
+                <img src="/images/icon-plus.svg" alt="plus button">
+              </button>
+            </div>
+
+            <div class="cart-btn-container" id="cart-btn-container">
+              <button type="button" class="add-to-cart" id="add-to-cart">
+                <img src="/images/icon-cart.svg" alt="cart">
+                Add to cart
+              </button>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">  </script> 
+  <script  type="text/javascript" src="app.js"></script>
+</body>
+</html>
+
+
+--style.css
+
+@import url("https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&family=Outfit:wght@300;400;600&family=Red+Hat+Display:wght@500;700;900&display=swap");
+
+:root {
+	--Orange: hsl(26, 100%, 55%);
+	--Pale-orange: hsl(25, 100%, 94%);
+	--Very-dark-blue: hsl(220, 13%, 13%);
+	--Dark-greyish-blue: hsl(219, 9%, 45%);
+	--Light-greyish-blue: hsl(223, 64%, 98%);
+    --Light-Grey: #b6bcc8;
+	--White: hsl(0, 0%, 100%);
+	--Black: hsl(0, 0%, 0%); /* 75% oppacity for lightbox background*/
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+	font-family: "Kumbh Sans", sans-serif;
+    width: 100%;
+}
+img{
+    border-radius: .75em;
+}
+.sneakers img{
+    border-radius: 0em;
+}
+.header{
+    width: 100%;
+    display:grid;
+    grid-template-columns: auto 1fr auto auto;
+    align-items: center;
+    gap: 1.5em;
+    padding: 1em;
+}
+.hamburger-icon img{
+    border-radius: 0;
+}
+.menu-text{
+    display: none;
+}
+.user{
+    height: 4em;
+    border-radius: 50%;
+    border: 2px solid transparent;
+}
+.item-number{
+    display: none;
+}
+
+.selected-img{
+    display: block;
+    max-width: 99%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0;
+    
+}
+.gallery{
+    display: none;
+}
+.shoe-info-container{
+    padding: 0 2rem;
+    display: grid;
+}
+.company{
+    width: 100%;
+    color: var(--Orange);
+    font-size: 4vw;
+    font-weight: bold;
+    padding: .5em 0em 0em 0em;
+}
+.shoe-name{
+    width: 100%;
+    color: var(--Very-dark-blue);
+    font-size: 8vw;
+    font-weight: bold;
+    padding: .5em 0em 0em 0em;
+}
+.shoe-description{
+    color: var(--Dark-greyish-blue);
+    font-size: 4vw;
+    padding: 1em 0em 0em 0em;
+}
+.cost-info{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 1em 0em 0em 0em;
+}
+.discount-info{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.discount-amount{
+    color: var(--Orange);
+    font-size: 4vw;
+    font-weight: bold;
+}
+.original-amount{
+    display: flex;
+    justify-content: flex-end;
+}
+.original-price-text{
+    text-decoration-line: line-through;
+    color: var(--Light-Grey);
+}
+.discounted-price-text{
+    font-size: 6vw;
+    font-weight: bold;
+}
+.quantity-info{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 2em 0em 0em 0em;
+}
+.quantity-btn, .prod-quantity{
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 25%;
+    background: transparent;
+}
+.prod-quantity{
+    width: 100%;
+    height: 100%;
+    border: none;
+    font-weight: bold;
+    font-size: xx-large;
+    text-align: center;
+    text-justify: center;
+}
+.cart-btn-container{
+    padding: 1em 0em 0em 0em;
+
+}
+.add-to-cart{
+    width: 100%;
+    height: 4em;
+    border: none;
+    background-color: var(--Orange);
+    border-radius: 15px;
+    font-size: larger;
+    font-weight: bold;
+    color: var(--White);
+}
+.add-to-cart img{
+    filter: brightness(300%);
+}
+
+/* Code for drop down menu overlay */
+
+.nav-overlay{
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0, 0.75);
+    overflow-x: hidden;
+    transition: 1s;
+}
+.nav-overlay-containter{
+    position: relative;
+    width: max-content;
+}
+.nav-overlay-content{
+    position: relative;
+    height: 100%;
+    width: 60%;
+    margin-top: 30px;
+    background-color: var(--White);
+}
+.overlay-links {
+    padding: 8px;
+    text-decoration: none;
+    font-size: 2em;
+    color: var(--Black);
+    display: block;
+    transition: 0.5s;
+  }
+.overlay a:hover, .overlay a:focus {
+    color: #f1f1f1;
+  }
+.overlay .nav-close-btn {
+    position: absolute;
+    top: 20px;
+    right: 10px;
+    background-color: transparent;
+    border: none;
+}
+
+/* cart window*/
+.center-window{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+.cart-window{
+    height: 55vh;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 6.5em;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    border-radius: .75em;
+    background-color: var(--White);
+    overflow-x: hidden;
+    transition: 1s;
+    display: block;
+    
+}
+.cart-header{
+    font-weight: bold;
+    padding: 1em 0em 0em 0em;
+}
+.cart-img-thumbnail{
+    border-radius: 0.25em;
+    width: 5em;
+}
+.cart-info{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+.cart-item-name{
+    font-size: small;
+}
+.cart-price-container{
+    display: block;
+}
+.clearCartBtn{
+    width: 100%;
+}
+.cart-checkout-btn{
+    width: 100%;
+    background-color: var(--Orange);
+    color: white;
+}
+
+/* code for mobile slide */
+.main-image{
+    position: relative;
+}
+.main-image .last-image{
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: var(--White);
+    padding: 5vw;
+    border: none;
+    cursor: pointer;
+    border-radius: 50%;
+}
+.main-image .next-image{
+    position: absolute;
+    top: 50%;
+    left: 90%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: var(--White);
+    padding: 5vw;
+    border: none;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+/* cart window*/
+/*come back to edit this later*/
+.cart-window{
+    display: grid;
+}
+
+.hidden{
+    display: none;
+}
+
+/*for full sized screen*/
+@media  screen and (min-width:1439px) {
+    .center-window{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    .cart-window{
+        height: 20vh;
+        width: 40vw;
+        position: fixed;
+        z-index: 1;
+        top: 6.5em;
+        left:60%;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        border-radius: .75em;
+        background-color: var(--White);
+        overflow-x: hidden;
+        transition: 1s;
+        display: block;
+        
+    }
+
+    body{
+        margin-left: 1em;
+        margin-right: 1em;
+        margin-top: 1em;
+    }
+    .header{
+        padding-left: 4em;
+        padding-right: 4em;
+    }
+    .drop-down-menu{
+        display: none;
+    }
+    .menu-text{
+        display:inline;
+    }
+    li{
+       display: inline; 
+       padding-left: 1em;
+       font-size: 20px;
+    }
+    .user{
+        height: 50px;
+    }
+    .page-body{
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        padding: 3em;
+        column-gap: 2em;
+    }
+    .main-shoe-images{
+        max-width: 100%;
+        max-height: 100%;
+        display: block;
+        padding: 2em;
+        justify-content: center;
+    }
+    .main-image{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    .selected-img{
+        display: flex;
+        justify-content: center;
+        object-fit: none;
+    }
+    .shoe-info-container{
+        max-height: 100%;
+        max-width: 100%;
+        display: block;
+    }
+    .gallery{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        padding: 1em;
+        padding-left: 2em;
+    }
+    .selected-img{
+        border-radius: 0.75em;
+        max-width: 100%;
+        max-height: 100%;
+        display: block;
+    }
+    .btn-image{
+        border: none;
+    }
+    .img-gallery{
+        padding: 1em;
+    }
+    .image1, .image2,.image3, .image4{
+        max-height: 90%;
+        max-width: 90%;
+    }
+    .nav-links{
+        color: var(--Dark-greyish-blue);
+    }
+    .shoe-info-container{
+        justify-items: left;
+    }
+    .company{
+        font-size: 25px;
+        font-weight: bold;
+        padding: 3em 0em 0em 0em;
+    }
+    .shoe-name{
+        font-size: 60px;
+        font-weight: bold;
+        padding: 1em 0em 0em 0em;
+    }
+    .shoe-description{
+        font-size: x-large;
+        padding: 3em 0em 0em 0em;
+    }
+    .cost-info{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        padding: 2em 0em 0em 0em;
+        display: block;
+    }
+    .discount-info{
+        grid-template-columns: 1fr 3fr;
+    }
+    .discount-amount{
+        color: var(--Orange);
+        font-size: 25px;
+        font-weight: bold;
+    }
+    .original-amount{
+        justify-content: none;
+    }
+    .original-price-text{
+        text-decoration-line: line-through;
+        color: var(--Light-Grey);
+        justify-content: none;
+    }
+    .discounted-price-text{
+        font-size: 45px;
+        font-weight: bold;
+    }
+    .shopping-btns{
+        padding: 2em 0em 0em 0em;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 1em;
+    }
+    .quantity-info{
+        width: 272px;
+        height: 56px;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        padding: 0em 0em 0em 0em;
+    }
+    .prod-quantity{
+        font-weight: bold;
+        font-size: xx-large;
+        text-align: center;
+        text-justify: center;
+    }
+    .cart-btn-container{
+        padding: 0;
+    }
+    .add-to-cart{
+        width: 272px;
+        height: 56px;
+    }
+
+    /*hidden aspects of mobile view only slide buttons*/
+    .last-image{
+        display: none;
+    }
+    .next-image{
+        display: none;
+    }
+
+    /*hidden mobile view drop down menu items*/
+    .overlay{
+        display: none;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-------fuckkkkkkkkkk app.js
+
+const fireBaseURL = "https://ecommerce-ap-34f87-default-rtdb.firebaseio.com/";
+const jsonEXT = ".json";
+
+/* Buttons */
+const $addBtn = $('#plus-btn');
+const $minusBtn = $('#minus-btn');
+const $AddToCartBtn = $('#add-to-cart');
+
+/* quantity add and subtract counter */
+let quantity = 0;
+let cartQuantity = 0;
+let price = 0;
+
+(function(){
+    
+
+    (function(){
+        $.ajax({
+            type: "GET",
+            url: `${fireBaseURL}${jsonEXT}`,
+            success:function(data){
+                let shoeData = {...data};
+
+                    price= shoeData.shoes[0].origionalPrice;
+
+                   /* display images in gallery box*/
+                    let galleryBox = `
+                        <div class="img-gallery1" id="img-gallery1">
+                            <button class="btn-image" id="btn-image1" onclick="img1()">    
+                                <img class="image1" src="`+shoeData.shoes[0].image1+`" alt="image1">
+                            </button>
+                        </div>
+                        <div class="img-gallery2" id="img-gallery2">
+                            <button class="btn-image" id="btn-image2" onclick="img2()">
+                                <img class="image2"src="`+shoeData.shoes[0].image2+`" alt="image1">
+                            </button>    
+                        </div>
+                        <div class="img-gallery3" id="img-gallery3">
+                            <button class="btn-image" id="btn-image3" onclick="img3()">
+                                <img class="image3" id="btn-image3" src="`+shoeData.shoes[0].image3+`" alt="image1">
+                            </button>
+                            </div>
+                        <div class="img-gallery4" id="img-gallery4">
+                            <button class="btn-image" id="btn-image4" onclick="img4()">
+                                <img class="image4" id="btn-image4" src="`+shoeData.shoes[0].image4+`" alt="image1">
+                            </button>    
+                        </div>
+                    `;
+                    $('#gallery').append(galleryBox);
+
+
+                    /* display shoe company */
+                    let shoeCompanyBox = `
+                        <p>`+shoeData.shoes[0].brand+`</p>
+                    `;
+                    $('#company').append(shoeCompanyBox);
+
+                    /*display shoe name info */
+                    let shoeNameBox = `
+                        <p id="name">`+shoeData.shoes[0].name+`</p>
+                    `;
+                    $('#shoe-name').append(shoeNameBox);
+
+                    /* display shoe description */
+                    let shoeDescriptionBox = `
+                        <p>`+shoeData.shoes[0].description+`</p>
+                    `;
+                    $('#shoe-description').append(shoeDescriptionBox);
+
+                    /*display discount price*/
+                    let shoeDiscountBox = `
+                        <p class="discount-text" id="discount-text">`+shoeData.shoes[0].discountPercentage+`%</p>
+                    `;
+                    $('#discount-amount').append(shoeDiscountBox);
+
+                    /*display origional price*/
+                    let shoeOriginalPriceBox = `
+                        <p class="original-price-text" id="original-price-text">$`+shoeData.shoes[0].origionalPrice+`</p>
+                    `;
+                    $('#original-amount').append(shoeOriginalPriceBox);
+
+                    /* Calculate and display the discounted price*/
+                    let discountPriceCalculated= shoeData.shoes[0].origionalPrice*(shoeData.shoes[0].discountPercentage/100);
+                    let discountedPriceBox = `
+                        <p class="discounted-price-text" id="discounted-price-text">$`+discountPriceCalculated+`</p>
+                    `;
+                    $('#discount-price').append(discountedPriceBox);
+
+                    /*display quantity in shopping-btns container*/
+                    let quantityMainBox = `
+                        <p class="prod-quantity" id="prod-quantity">`+0+`</p>
+                    `;
+                    $('#quantity-num').append(quantityMainBox);
+
+                    /* cart window*/
+                    let cartThumbnail=`
+                    <img class="cart-img-thumbnail" src="/images/image-product-1-thumbnail.jpg" alt="img">
+                    `;
+                    $('#cart-img').append(cartThumbnail);
+
+                    let itemName=`
+                        <p class="cart-item-name-text" id="cart-item-name-text">`+shoeData.shoes[0].name+`</p>
+                    `;
+                    $('#cart-item-name').append(itemName);
+
+                    let itemPrice=`
+                        <p class="cart-price-text" id="cart-price-text">$`+discountPriceCalculated+`</p>
+                    `;
+                    $('#cart-price').append(itemPrice);
+
+                    
+            },
+            error:function(error){
+                console.log(error);
+            }
+        })
+    
+    let mainImageBox =`
+        <img class="selected-img" src="/images/image-product-1.jpg" alt="img">
+        <button class="last-image" id="last-image" onclick="lastSlideImage()">
+            <img class="last-slide-btn" id="last-slide-btn"  src="/images/icon-previous.svg" alt="prev">
+        </button>
+        <button class="next-image" id="next-image" onclick="nextSlideImage()">
+            <img class="next-slide-btn" id="next-slide-btn" src="/images/icon-next.svg" alt="next">
+        </button>`;
+    $('#main-image').append(mainImageBox);
+
+    })();
+
+    $addBtn.click(function(e){
+        e.preventDefault();
+        quantity++;
+        console.log(quantity);
+        document.getElementById("prod-quantity").innerHTML=quantity;
+    })
+    $minusBtn.click(function(e){
+        e.preventDefault();
+        if(quantity>=1){
+            quantity--;
+            document.getElementById("prod-quantity").innerHTML=quantity;
+        }
+    })
+    $AddToCartBtn.click(function(e){
+        e.preventDefault();
+        cartQuantity+=quantity;
+        //function to reset product quantity in shopping buttons after add to cart is clicked
+        function qtyReset(){
+            quantity=0;
+            document.getElementById("prod-quantity").innerHTML=quantity;
+        }
+        qtyReset();
+        document.getElementById("cartQty").innerHTML=cartQuantity; 
+    })
+
+})();
+
+/*functions for desktopview gallery and main image production*/
+function img1(){   
+    let largeImgBox1 =`
+        <img class="selected-img" src="/images/image-product-1.jpg" alt="img">
+    `;
+    $('#main-image').empty();
+    $('#main-image').append(largeImgBox1);
+    $('#main-image').append(slideBtns);
+    currentImgMobile = 0;
+}
+function img2(){ 
+    let largeImgBox2 =`
+        <img class="selected-img" src="/images/image-product-2.jpg" alt="img">
+    `;
+    $('#main-image').empty();
+    $('#main-image').append(largeImgBox2);
+    $('#main-image').append(slideBtns);
+    currentImgMobile = 1;
+}
+function img3(){
+    let largeImgBox3 =`
+        <img class="selected-img" src="/images/image-product-3.jpg" alt="img">
+     `;
+    $('#main-image').empty();
+    $('#main-image').append(largeImgBox3);
+    $('#main-image').append(slideBtns);
+    currentImgMobile = 2;
+}
+function img4(){
+    let largeImgBox4 =`
+        <img class="selected-img" src="/images/image-product-4.jpg" alt="img">
+    `;
+    $('#main-image').empty();
+    $('#main-image').append(largeImgBox4);
+    $('#main-image').append(slideBtns);
+    currentImgMobile = 3;
+}
+
+
+/*functions for mobile view button activated slide show*/
+let currentImgMobile = 0;
+let mobileImg1 = `
+    <img class="selected-img" src="/images/image-product-1.jpg" alt="img">`;
+let mobileImg2 = `
+    <img class="selected-img" src="/images/image-product-2.jpg" alt="img">`;
+let mobileImg3 = `
+    <img class="selected-img" src="/images/image-product-3.jpg" alt="img">`;
+let mobileImg4 = `
+    <img class="selected-img" src="/images/image-product-4.jpg" alt="img">`;
+let slideBtns=`
+    <button class="last-image" id="last-image" onclick="lastSlideImage()">
+        <img class="last-slide-btn" id="last-slide-btn"  src="/images/icon-previous.svg" alt="prev">
+    </button>
+    <button class="next-image" id="next-image" onclick="nextSlideImage()">
+        <img class="next-slide-btn" id="next-slide-btn" src="/images/icon-next.svg" alt="next">
+    </button>`;
+function lastSlideImage(){
+    if(currentImgMobile>0){
+        currentImgMobile--;
+    }else{
+        currentImgMobile = 3;
+    }
+    displayMobileImg();
+}
+function nextSlideImage(){
+    if(currentImgMobile<3){
+        currentImgMobile++;
+    } else{
+        currentImgMobile = 0;
+    }
+    displayMobileImg();
+}
+function displayMobileImg(){
+    switch(currentImgMobile){
+        case 0:
+            $('#main-image').empty();
+            $('#main-image').append(mobileImg1);
+            $('#main-image').append(slideBtns);
+            break;
+        case 1:
+            $('#main-image').empty();
+            $('#main-image').append(mobileImg2);
+            $('#main-image').append(slideBtns);
+            break;
+        case 2:
+            $('#main-image').empty();
+            $('#main-image').append(mobileImg3);
+            $('#main-image').append(slideBtns);
+            break;
+        case 3:
+            $('#main-image').empty();
+            $('#main-image').append(mobileImg4);
+            $('#main-image').append(slideBtns);
+            break;
+    }
+}
+
+// Functions to open and close navigation bar drop down menu overlay
+function openNav() {
+    document.getElementById("nav-overlay").style.width = "100%";
+} 
+function closeNav() {
+    document.getElementById("nav-overlay").style.width = "0%";
+}
+
+//Functions to open and close cart window
+function openCartWindow() {
+    let cartWindowelement = document.getElementById('cart-window');
+    cartWindowelement.classList.remove('hidden');
+    
+    console.log(cartQuantity, "cart qty");
+    //populating cart window information
+    if(cartQuantity==0){     
+        let emptyCart = `
+            <p class="empty-text">Your cart is empty.</p>
+        `;
+        $('#cart-empty').empty();
+        $('#cart-empty').append(emptyCart);
+
+        let cartElement=document.getElementById("cart-info");
+        cartElement.className += " hidden";
+        let emptyCartElement=document.getElementById("cart-checkout");
+        emptyCartElement.className += " hidden";
+    }else{
+        
+        let cartTotal = price*cartQuantity;
+        let cartTotalPrice=`
+            <p class="cart-total-text" id="cart-total-text">$`+cartTotal+`</p>
+        `;
+        $('#cart-total').append(cartTotalPrice);
+        
+    }
+
+} 
+function closeCartWindow() {
+    let cartWindowelement = document.getElementById('cart-window');
+    cartWindowelement.className += (' hidden');
+}
+
+//Functions to open and close desktop view lightbox
+function openLightBox() {
+    document.getElementById("lightBox").style.width = "100%";
+}
+function closeLightBox() {
+    document.getElementById("lightBox").style.width = "0%";
+}
+
+
+
