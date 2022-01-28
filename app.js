@@ -149,7 +149,8 @@ let price = 0;
             document.getElementById("prod-quantity").innerHTML=quantity;
         }
         qtyReset();
-        document.getElementById("cartQty").innerHTML=cartQuantity; 
+        document.getElementById("cartQty").innerHTML=cartQuantity;
+        document.getElementById("cart-number").innerHTML=cartQuantity; 
     })
 
 })();
@@ -261,6 +262,7 @@ function closeNav() {
 
 //Functions to open and close cart window
 function openCartWindow() {
+    document.getElementById("cart-window").style.width = "100%";
     let cartWindowelement = document.getElementById('cart-window');
     cartWindowelement.classList.remove('hidden');
     
@@ -278,17 +280,15 @@ function openCartWindow() {
         let emptyCartElement=document.getElementById("cart-checkout");
         emptyCartElement.className += " hidden";
     }else{
-        
         let cartTotal = price*cartQuantity;
         let cartTotalPrice=`
             <p class="cart-total-text" id="cart-total-text">$`+cartTotal+`</p>
         `;
         $('#cart-total').append(cartTotalPrice);
-        
     }
-
 } 
 function closeCartWindow() {
+    document.getElementById("cart-window").style.width = "0%";
     let cartWindowelement = document.getElementById('cart-window');
     cartWindowelement.className += (' hidden');
 }
@@ -301,3 +301,8 @@ function closeLightBox() {
     document.getElementById("lightBox").style.width = "0%";
 }
 
+function clearCart(){
+    cartQuantity = 0;
+    console.log(cartQuantity);
+    closeCartWindow();
+}
