@@ -1,86 +1,124 @@
 const fireBaseURL = "https://ecommerce-ap-34f87-default-rtdb.firebaseio.com/";
 const jsonEXT = ".json";
 
-/* quantity add and subtract counter */
-let quantity = 0;
-
 (function(){
-    $.ajax({
-        type: "GET",
-        url: `${fireBaseURL}${jsonEXT}`,
-        success:function(data){
-            // console.log(data);
-            let shoeData = {...data};
-            console.log(shoeData.shoes);
-            console.log(shoeData.shoes[0].brand);
+    // /* this code is only to test scaleability (only keep one uncommented) */
+    // let currentshoe= "0"; // let currentshoe= 1; let currentshoe= 2;
+    // window.localStorage.setItem('currentshoe', currentshoe);
+    
+    
 
+    /* Buttons */
+    const $addBtn = $('#plus-btn');
+    const $minusBtn = $('#minus-btn');
+    /* quantity add and subtract counter */
+    let quantity = 0;
 
-            /* display images in gallery box*/
-            let galleryBox = `
-            <div class="img-gallery1" id="img-gallery">
-                <img class="image1" id="image1" src="`+shoeData.shoes[0].image1+`" alt="image1">
-            </div>
-            <div class="img-gallery2" id="img-gallery">
-                <img class="image2" id="image2" class="" src="`+shoeData.shoes[0].image2+`" alt="image1">
-            </div>
-            <div class="img-gallery3" id="img-gallery">
-                <img class="image3" id="image3" src="`+shoeData.shoes[0].image3+`" alt="image1">
-            </div>
-            <div class="img-gallery4" id="img-gallery">
-                <img class="image4" id="image3" src="`+shoeData.shoes[0].image4+`" alt="image1">
-            </div>
-            `;
-            $('#gallery').append(galleryBox);
+    (function(){
+        let currentshoe = window.localStorage.getItem('currentshoe');
+        //console.log(currentshoe);
+        $.ajax({
+            type: "GET",
+            url: `${fireBaseURL}${jsonEXT}`,
+            success:function(data){
+                //console.log(data);
+                let shoeData = {...data};
+                //console.log(shoeData.shoes);
+                //console.log(shoeData.shoes[0].brand);
 
-            /* display shoe company */
-            let shoeCompanyBox = `
-                <p>`+shoeData.shoes[0].brand+`</p>
-            `;
-            $('#company').append(shoeCompanyBox);
+                // iterating through the data 
+                //Object.values(shoeData).forEach(shoe=>{
+                //     console.log(shoe, shoeData.shoe,"logging one shoe at a time");
+                //     Object.values(shoe).forEach(value =>{
+                //         if(currentshoe==shoe){
+                //             console.log(currentshoe); 
+                //             console.log(value.brand, "logging each brand");
+                //         }
+                //     })   
+                // });
 
-            /*display shoe name info */
-            let shoeNameBox = `
-                <p>`+shoeData.shoes[0].name+`</p>
-            `;
-            $('#shoe-name').append(shoeNameBox);
+                   /* display images in gallery box*/
+                    let galleryBox = `
+                        <div class="img-gallery1" id="img-gallery">
+                        <img class="image1" id="image1" src="`+shoeData.shoes[0].image1+`" alt="image1">
+                       </div>
+                        <div class="img-gallery2" id="img-gallery">
+                            <img class="image2" id="image2" class="" src="`+shoeData.shoes[0].image2+`" alt="image1">
+                        </div>
+                        <div class="img-gallery3" id="img-gallery">
+                            <img class="image3" id="image3" src="`+shoeData.shoes[0].image3+`" alt="image1">
+                        </div>
+                        <div class="img-gallery4" id="img-gallery">
+                            <img class="image4" id="image3" src="`+shoeData.shoes[0].image4+`" alt="image1">
+                        </div>
+                    `;
+                    $('#gallery').append(galleryBox);
 
-            /* display shoe description */
-            let shoeDescriptionBox = `
-                <p>`+shoeData.shoes[0].description+`</p>
-            `;
-            $('#shoe-description').append(shoeDescriptionBox);
+                    /* display shoe company */
+                    let shoeCompanyBox = `
+                        <p>`+shoeData.shoes[0].brand+`</p>
+                    `;
+                    $('#company').append(shoeCompanyBox);
 
-            /*display discount price*/
-            let shoeDiscountBox = `
-                <p class="discount-text" id="discount-text">`+shoeData.shoes[0].discountPercentage+`%</p>
-            `;
-            $('#discount-amount').append(shoeDiscountBox);
+                    /*display shoe name info */
+                    let shoeNameBox = `
+                        <p>`+shoeData.shoes[0].name+`</p>
+                    `;
+                    $('#shoe-name').append(shoeNameBox);
 
-            /*display origional price*/
-            let shoeOriginalPriceBox = `
-                <p class="original-price-text" id="original-price-text">$`+shoeData.shoes[0].origionalPrice+`</p>
-            `;
-            $('#original-amount').append(shoeOriginalPriceBox);
+                    /* display shoe description */
+                    let shoeDescriptionBox = `
+                        <p>`+shoeData.shoes[0].description+`</p>
+                    `;
+                    $('#shoe-description').append(shoeDescriptionBox);
 
-            /* Calculate and display the discounted price*/
-            let discountPriceCalculated= shoeData.shoes[0].origionalPrice*(shoeData.shoes[0].discountPercentage/100);
-            let discountedPriceBox = `
-                <p class="discounted-price-text" id="discounted-price-text">$`+discountPriceCalculated+`</p>
-            `;
-            $('#discount-price').append(discountedPriceBox);
+                    /*display discount price*/
+                    let shoeDiscountBox = `
+                        <p class="discount-text" id="discount-text">`+shoeData.shoes[0].discountPercentage+`%</p>
+                    `;
+                    $('#discount-amount').append(shoeDiscountBox);
 
-            /*display quantity in shopping-btns container*/
-            let quantityMainBox = `
-                <p class="prod-quantity">`+quantity+`</p>
-            `;
-            $('#quantity-num').append(quantityMainBox);
+                    /*display origional price*/
+                    let shoeOriginalPriceBox = `
+                        <p class="original-price-text" id="original-price-text">$`+shoeData.shoes[0].origionalPrice+`</p>
+                    `;
+                    $('#original-amount').append(shoeOriginalPriceBox);
 
-        },
-        error:function(error){
-            console.log(error);
-        }
+                    /* Calculate and display the discounted price*/
+                    let discountPriceCalculated= shoeData.shoes[0].origionalPrice*(shoeData.shoes[0].discountPercentage/100);
+                    let discountedPriceBox = `
+                        <p class="discounted-price-text" id="discounted-price-text">$`+discountPriceCalculated+`</p>
+                    `;
+                    $('#discount-price').append(discountedPriceBox);
+
+                    /*display quantity in shopping-btns container*/
+                    let quantityMainBox = `
+                        <p class="prod-quantity" id="prod-quantity">`+0+`</p>
+                    `;
+                    $('#quantity-num').append(quantityMainBox);
+            },
+            error:function(error){
+                console.log(error);
+            }
+        })
+
+    })();
+
+    $addBtn.click(function(e){
+        e.preventDefault();
+
+        quantity++;
+        console.log(quantity);
+        document.getElementById("prod-quantity").innerHTML=quantity;
     })
 
+    $minusBtn.click(function(e){
+        e.preventDefault();
+
+        quantity--;
+        console.log(quantity);
+        document.getElementById("prod-quantity").innerHTML=quantity;
+    })
 
 })();
 
