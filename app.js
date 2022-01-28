@@ -5,41 +5,17 @@ const jsonEXT = ".json";
 const $addBtn = $('#plus-btn');
 const $minusBtn = $('#minus-btn');
 
-
-
-
 (function(){
-    // /* this code is only to test scaleability (only keep one uncommented) */
-    // let currentshoe= "0"; // let currentshoe= 1; let currentshoe= 2;
-    // window.localStorage.setItem('currentshoe', currentshoe);
-    
-
     
     /* quantity add and subtract counter */
     let quantity = 0;
 
     (function(){
-        let currentshoe = window.localStorage.getItem('currentshoe');
-        //console.log(currentshoe);
         $.ajax({
             type: "GET",
             url: `${fireBaseURL}${jsonEXT}`,
             success:function(data){
-                //console.log(data);
                 let shoeData = {...data};
-                //console.log(shoeData.shoes);
-                //console.log(shoeData.shoes[0].brand);
-
-                // iterating through the data 
-                //Object.values(shoeData).forEach(shoe=>{
-                //     console.log(shoe, shoeData.shoe,"logging one shoe at a time");
-                //     Object.values(shoe).forEach(value =>{
-                //         if(currentshoe==shoe){
-                //             console.log(currentshoe); 
-                //             console.log(value.brand, "logging each brand");
-                //         }
-                //     })   
-                // });
 
                    /* display images in gallery box*/
                     let galleryBox = `
@@ -133,7 +109,6 @@ const $minusBtn = $('#minus-btn');
             document.getElementById("prod-quantity").innerHTML=quantity;
         }
     })
-
 
 })();
 
