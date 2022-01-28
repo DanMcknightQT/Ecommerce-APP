@@ -126,7 +126,7 @@ let cartQuantity = 0;
     })
     $AddToCartBtn.click(function(e){
         e.preventDefault();
-        cartQuantity=quantity;
+        cartQuantity+=quantity;
         //function to reset product quantity in shopping buttons after add to cart is clicked
         function qtyReset(){
             console.log("hi")
