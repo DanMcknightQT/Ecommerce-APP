@@ -226,7 +226,7 @@ img{
 /* cart window*/
 /*come back to edit this later*/
 .cart-window{
-    display: none;
+    display: grid;
 }
 
 /*for full sized screen*/

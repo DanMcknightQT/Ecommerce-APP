@@ -4,11 +4,14 @@ const jsonEXT = ".json";
 /* Buttons */
 const $addBtn = $('#plus-btn');
 const $minusBtn = $('#minus-btn');
+const $AddToCartBtn = $('#add-to-cart');
+
+/* quantity add and subtract counter */
+let quantity = 0;
+let cartQuantity = 0;
 
 (function(){
     
-    /* quantity add and subtract counter */
-    let quantity = 0;
 
     (function(){
         $.ajax({
@@ -110,7 +113,6 @@ const $minusBtn = $('#minus-btn');
 
     $addBtn.click(function(e){
         e.preventDefault();
-
         quantity++;
         console.log(quantity);
         document.getElementById("prod-quantity").innerHTML=quantity;
@@ -121,6 +123,18 @@ const $minusBtn = $('#minus-btn');
             quantity--;
             document.getElementById("prod-quantity").innerHTML=quantity;
         }
+    })
+    $AddToCartBtn.click(function(e){
+        e.preventDefault();
+        cartQuantity=quantity;
+        //function to reset product quantity in shopping buttons after add to cart is clicked
+        function qtyReset(){
+            console.log("hi")
+            quantity=0;
+            document.getElementById("prod-quantity").innerHTML=quantity;
+        }
+        qtyReset();
+        document.getElementById("item-qty-number").innerHTML=cartQuantity; 
     })
 
 })();
@@ -232,7 +246,6 @@ function closeNav() {
 }
 
 //Functions to open and close cart window
-// Functions to open and close navigation bar drop down menu overlay
 function openCartWindow() {
     document.getElementById("nav-overlay").style.width = "100%";
 }
