@@ -46,10 +46,14 @@ img{
 .item-number{
     display: none;
 }
+
 .selected-img{
-    max-width: 100%;
-    display: flex;
-    justify-content: center;
+    display: block;
+    max-width: 99%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0;
+    
 }
 .gallery{
     display: none;
@@ -148,8 +152,29 @@ img{
 .main-image{
     position: relative;
 }
-.slide-btn-container{
-
+.main-image .last-image{
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: var(--White);
+    padding: 5vw;
+    border: none;
+    cursor: pointer;
+    border-radius: 50%;
+}
+.main-image .next-image{
+    position: absolute;
+    top: 50%;
+    left: 90%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: var(--White);
+    padding: 5vw;
+    border: none;
+    cursor: pointer;
+    border-radius: 50%;
 }
 
 
@@ -206,6 +231,7 @@ img{
     .selected-img{
         display: flex;
         justify-content: center;
+        object-fit: none;
     }
     .shoe-info-container{
         max-height: 100%;
