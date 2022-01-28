@@ -112,7 +112,7 @@ const $minusBtn = $('#minus-btn');
 
 })();
 
-
+/*functions for desktopview gallery and main image production*/
 function img1(){   
     let largeImgBox1 =`
         <img class="selected-img" src="/images/image-product-1.jpg" alt="img">
@@ -120,7 +120,6 @@ function img1(){
     $('#main-image').empty();
     $('#main-image').append(largeImgBox1);
 }
-
 function img2(){ 
     let largeImgBox2 =`
         <img class="selected-img" src="/images/image-product-2.jpg" alt="img">
@@ -128,7 +127,6 @@ function img2(){
     $('#main-image').empty();
     $('#main-image').append(largeImgBox2);
 }
-
 function img3(){
     let largeImgBox3 =`
         <img class="selected-img" src="/images/image-product-3.jpg" alt="img">
@@ -136,7 +134,6 @@ function img3(){
     $('#main-image').empty();
     $('#main-image').append(largeImgBox3);
 }
-
 function img4(){
     let largeImgBox4 =`
         <img class="selected-img" src="/images/image-product-4.jpg" alt="img">
