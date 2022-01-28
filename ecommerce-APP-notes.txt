@@ -1,3 +1,6 @@
+
+--- HOW TO SET UP OBJECT OF OBJECTS ---
+
 {
     "shoes":{
         "1":{
@@ -24,3 +27,46 @@
         }
     }
 }
+
+---NEW WAY TO WRITE THE HTML ELEMENTS IN THE JAVASCRIPT FILE USING BACKTICKS---
+	*the one on top is using backticks*
+	*the bottom is using normal string interpolation(the long way)*
+
+let userBox2 = 
+    `<div class = 'text-box'style = 'border: 1px solid black; margin-top: 5px' >
+    <p>${userData[user].firstName}${userData[user].lastName}</p>
+    <p>${message[text].post}</p> 
+    <p>${message[text].time}</p> 
+    <button id = 'tweetHolder'onclick = 'deleteCb'> DELETE </button> 
+    </div>`
+    
+
+let userBox2 = 
+    "<div class='text-box' style='border: 1px solid black; margin-top: 5px'>" +
+    "<p>" + userData[user].firstName + " " + userData[user].lastName +
+   "</p>" + "<p>" + message[text].post + "</p>" +
+    "<p>" + message[text].time + "</p>"+ "<button id='tweetHolder' onclick='deleteOption(this.id)'>" + "DELETE"+"</button>" + "</div>"
+
+--HOW TO ITERATE THROUGH SHOES IN ECOMMERCE-APP FRONTEND MENTOR---
+
+		//success:function(data){
+                //console.log(data);
+                //let shoeData = {...data};
+                //console.log(shoeData.shoes);
+                //console.log(shoeData.shoes[0].brand);
+
+		// iterating through the data 
+                //Object.values(shoeData).forEach(shoe=>{
+                //     console.log(shoe, shoeData.shoe,"logging one shoe at a time");
+                //     Object.values(shoe).forEach(value =>{
+                //         if(currentshoe==shoe){
+                //             console.log(currentshoe); 
+                //             console.log(value.brand, "logging each brand");
+                //         }
+                //     })   
+                // });
+
+
+
+
+
