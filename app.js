@@ -230,3 +230,13 @@ function openNav() {
 function closeNav() {
     document.getElementById("nav-overlay").style.width = "0%";
 }
+
+//Functions to open and close cart window
+// Functions to open and close navigation bar drop down menu overlay
+function openCartWindow() {
+    document.getElementById("nav-overlay").style.width = "100%";
+}
+  
+function closeCartWindow() {
+    document.getElementById("nav-overlay").style.width = "0%";
+}
