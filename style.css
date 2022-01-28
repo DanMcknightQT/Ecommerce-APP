@@ -28,7 +28,7 @@ img{
     width: 100%;
     display:grid;
     grid-template-columns: auto 1fr auto auto;
-    /* align-items: center; */
+    align-items: center;
     gap: 1.5em;
     padding: 1em;
 }
@@ -58,8 +58,9 @@ img{
 .gallery{
     display: none;
 }
-.show-info-container{
-
+.shoe-info-container{
+    padding: 0 2rem;
+    display: grid;
 }
 .company{
     width: 100%;
@@ -78,21 +79,34 @@ img{
 .shoe-description{
     color: var(--Dark-greyish-blue);
     font-size: 4vw;
-    padding: .5em 0em 0em 0em;
+    padding: 1em 0em 0em 0em;
 }
-
 .cost-info{
+    width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr;
+    padding: 1em 0em 0em 0em;
 }
 .discount-info{
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
-.shoe-info-container{
-    padding: 0 2rem;
-    display: grid;
-    place-items: center;
+.discount-amount{
+    color: var(--Orange);
+    font-size: 4vw;
+    font-weight: bold;
+}
+.original-amount{
+    display: flex;
+    justify-content: flex-end;
+}
+.original-price-text{
+    text-decoration-line: line-through;
+    color: var(--Light-Grey);
+}
+.discounted-price-text{
+    font-size: 6vw;
+    font-weight: bold;
 }
 .prod-quantity{
     width: 100%;
@@ -200,21 +214,26 @@ img{
         padding: 3em 0em 0em 0em;
     }
     .cost-info{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
         padding: 2em 0em 0em 0em;
         display: block;
     }
     .discount-info{
         grid-template-columns: 1fr 3fr;
     }
-    .discount-amount
-    {
+    .discount-amount{
         color: var(--Orange);
         font-size: 25px;
         font-weight: bold;
     }
+    .original-amount{
+        justify-content: none;
+    }
     .original-price-text{
         text-decoration-line: line-through;
         color: var(--Light-Grey);
+        justify-content: none;
     }
     .discounted-price-text{
         font-size: 45px;
@@ -232,12 +251,19 @@ img{
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
     }
+    .prod-quantity{
+        font-weight: bold;
+        font-size: xx-large;
+        text-align: center;
+        text-justify: center;
+    }
     .quantity-btn, .prod-quantity{
         width: 100%;
         height: 100%;
         border: none;
         border-radius: 25%;
     }
+
     .add-to-cart{
         width: 272px;
         height: 56px;
