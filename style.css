@@ -24,6 +24,9 @@ body {
 img{
     border-radius: .75em;
 }
+.sneakers img{
+    border-radius: 0em;
+}
 .header{
     width: 100%;
     display:grid;
@@ -148,6 +151,48 @@ img{
     filter: brightness(300%);
 }
 
+/* Code for drop down menu overlay */
+
+.nav-overlay{
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0, 0.75);
+    overflow-x: hidden;
+    transition: 1s;
+}
+.nav-overlay-containter{
+    position: relative;
+    width: max-content;
+}
+.nav-overlay-content{
+    position: relative;
+    height: 100%;
+    width: 60%;
+    margin-top: 30px;
+    background-color: var(--White);
+}
+.overlay-links {
+    padding: 8px;
+    text-decoration: none;
+    font-size: 2em;
+    color: var(--Black);
+    display: block;
+    transition: 0.5s;
+  }
+.overlay a:hover, .overlay a:focus {
+    color: #f1f1f1;
+  }
+.overlay .nav-close-btn {
+    position: absolute;
+    top: 20px;
+    right: 10px;
+    background-color: transparent;
+    border: none;
+}
 
 /* code for mobile slide */
 .main-image{
@@ -338,6 +383,11 @@ img{
         display: none;
     }
     .next-image{
+        display: none;
+    }
+
+    /*hidden mobile view drop down menu items*/
+    .overlay{
         display: none;
     }
 }

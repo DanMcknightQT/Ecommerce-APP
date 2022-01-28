@@ -18,9 +18,25 @@
 
     <header class="header" id="header">
       <div class="drop-down-menu" id="drop-down-menu">
-        <a href="#" class="hamburger-icon" id="hambuger-icon">
+        <a href="#" class="hamburger-icon" id="hambuger-icon" onclick="openNav()">
           <img class="hamburger" id="hamburger" src="/images/icon-menu.svg" alt="menu icon">
         </a>
+      </div>
+      <div class="nav-overlay" id="nav-overlay">
+        <div class="nav-overlay-container" id="nav-overlay-container"></div>
+          <div class="nav-overlay-content" id="nav-overlay-content">
+            <button class="nav-close-btn" id="nav-close-btn" onclick="closeNav()">
+              <img class="navCloseBtn" id="navCloseBtn" src="images/icon-close.svg" alt="close">
+            </button>
+            <div class="nav-link-container" id="nav-link-container">
+              <a  class="overlay-links" href="#">Collections</a>
+              <a  class="overlay-links" href="#">Men</a>
+              <a  class="overlay-links" href="#">Women</a>
+              <a  class="overlay-links" href="#">About</a>
+              <a  class="overlay-links" href="#">Contact</a>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="sneakers" id="sneakers">
         <img class="logo" id="logo" src="/images/logo.svg" alt="logo">

@@ -122,7 +122,7 @@ const $minusBtn = $('#minus-btn');
             document.getElementById("prod-quantity").innerHTML=quantity;
         }
     })
-    
+
 })();
 
 /*functions for desktopview gallery and main image production*/
@@ -220,4 +220,13 @@ function displayMobileImg(){
             $('#main-image').append(slideBtns);
             break;
     }
+}
+
+// Functions to open and close navigation bar drop down menu overlay
+function openNav() {
+    document.getElementById("nav-overlay").style.width = "100%";
+}
+  
+function closeNav() {
+    document.getElementById("nav-overlay").style.width = "0%";
 }
