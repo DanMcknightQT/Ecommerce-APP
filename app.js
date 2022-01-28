@@ -262,6 +262,7 @@ function closeNav() {
 
 //Functions to open and close cart window
 function openCartWindow() {
+    document.getElementById("cart-window").style.display = "grid";
     document.getElementById("cart-window").style.width = "100%";
     let cartWindowelement = document.getElementById('cart-window');
     cartWindowelement.classList.remove('hidden');
@@ -288,6 +289,7 @@ function openCartWindow() {
     }
 } 
 function closeCartWindow() {
+    document.getElementById("cart-window").style.display = "none";
     document.getElementById("cart-window").style.width = "0%";
     let cartWindowelement = document.getElementById('cart-window');
     cartWindowelement.className += (' hidden');
