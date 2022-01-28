@@ -237,8 +237,7 @@ function displayMobileImg(){
 // Functions to open and close navigation bar drop down menu overlay
 function openNav() {
     document.getElementById("nav-overlay").style.width = "100%";
-}
-  
+} 
 function closeNav() {
     document.getElementById("nav-overlay").style.width = "0%";
 }
@@ -246,8 +245,7 @@ function closeNav() {
 //Functions to open and close cart window
 function openCartWindow() {
     document.getElementById("cart-window").style.display = "grid";
-}
-  
+} 
 function closeCartWindow() {
     document.getElementById("cart-window").style.display = "none";
 }
@@ -256,7 +254,6 @@ function closeCartWindow() {
 function openLightBox() {
     document.getElementById("lightBox").style.width = "100%";
 }
-  
 function closeCartWindow() {
     document.getElementById("lightBox").style.width = "0%";
 }
