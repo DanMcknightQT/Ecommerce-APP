@@ -143,6 +143,16 @@ img{
     filter: brightness(300%);
 }
 
+
+/* code for mobile slide */
+.main-image{
+    position: relative;
+}
+.slide-btn-container{
+
+}
+
+
 /* cart window*/
 /*come back to edit this later*/
 .cart-window{
@@ -295,5 +305,13 @@ img{
     .add-to-cart{
         width: 272px;
         height: 56px;
+    }
+
+    /*hidden aspects of mobile view only slide buttons*/
+    .last-image{
+        display: none;
+    }
+    .next-image{
+        display: none;
     }
 }
