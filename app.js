@@ -109,8 +109,6 @@ let cartQuantity = 0;
 
     })();
 
-    
-
     $addBtn.click(function(e){
         e.preventDefault();
         quantity++;
@@ -253,3 +251,4 @@ function openCartWindow() {
 function closeCartWindow() {
     document.getElementById("nav-overlay").style.width = "0%";
 }
+
