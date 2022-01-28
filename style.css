@@ -28,15 +28,18 @@ img{
     width: 100%;
     display:grid;
     grid-template-columns: auto 1fr auto auto;
-    align-items: center;
+    /* align-items: center; */
     gap: 1.5em;
     padding: 1em;
+}
+.hamburger-icon img{
+    border-radius: 0;
 }
 .menu-text{
     display: none;
 }
 .user{
-    height: 24px;
+    height: 4em;
     border-radius: 50%;
     border: 2px solid transparent;
 }
@@ -49,19 +52,36 @@ img{
 }
 .selected-img{
     max-width: 100%;
+    display: flex;
+    justify-content: center;
 }
 .gallery{
     display: none;
 }
+.show-info-container{
+
+}
 .company{
+    width: 100%;
     color: var(--Orange);
+    font-size: 4vw;
+    font-weight: bold;
+    padding: 1em 0em 0em 0em;
+    text-justify: right;
 }
 .shoe-name{
+    width: 100%;
     color: var(--Very-dark-blue);
+    font-size: 4em;
+    font-weight: bold;
+    padding: 1em 0em 0em 0em;
 }
 .shoe-description{
     color: var(--Dark-greyish-blue);
+    font-size: x-large;
+    padding: 3em 0em 0em 0em;
 }
+
 .cost-info{
     display: grid;
     grid-template-columns: 1fr 1fr;
