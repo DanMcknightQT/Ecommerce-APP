@@ -81,38 +81,50 @@
           <img class="user" src="/images/image-avatar.png" alt="user">
         </a>
       </div>
+
       <div class="cart-window hidden" id="cart-window">
-        <p class="window-title">
-          <img class="cartCloseBtn" onclick="closeCartWindow()" src="/images/icon-close.svg" alt="close">
-          Cart
-        </p>
-        <div class="cart-info">
-            <div class="empty-text" id="empty-text">
-              <!--inserted from app.js-->
+        <div class="cart-title" id="cart-title">
+          <p class="cart-header" id="cart-header">
+            <img class="closeCart-btn" id="closeCart-btn" onclick="closeCartWindow()" src="/images/icon-close.svg" alt="close">
+            Cart
+          </p>
+        </div>
+        <div class="cart-empty" id="cart-empty">
+          <!--inserted by app.js-->
+        </div>
+        <div class="cart-info" id="cart-info">
+          <div class="cart-img" id="cart-img">
+            <!--thumbnail inserted by app.js-->
+          </div>
+          <div class="cart-item-info" id="cart-item-info">
+            <div class="cart-item-name" id="cart-item-name">
+              <!--populated by app.jss-->
             </div>
-          <ul class="cart-items" id="cart-items">
-            <li class="cart-item">
-              <div class="cart-item-img" id="cart-item-img">
-                <!--  -->
+            <div class="cart-price-container" id="cart-total">
+              <div class="cart-price" id="cart-price">
+                
               </div>
-              <div class="item-info">
-                <p class="item-name">insert item name from json</p>
-                <div class="item-amount">
-                  <span class="item-price">insert price from json</span>
-                  <p class="item-qty-x" id="item-qty-x">x<span class="item-qty-number" id="item-qty-number">0</span></p>
-                  <span class="total-price">insert total price</span>
-                </div>
+              <div class="cart-qty" id="cart-qty">
+                <p class="cart-qty-text" id="cart-qty-text">
+                  x<span class="cartQty"id="cartQty"></span>
+                </p>
               </div>
-              <button type="button" id="cart-delete-btn">
-                <img src="images/icon-delete.svg" alt="delete"/>
-              </button>
-            </li>
-          </ul>
-          <button type="button" class="btn btn-checkout" id="cart-checkout-btn">
-            Checkout
-          </button>
+              <div class="cart-total" id="cart-total">
+                <!--inserted by app.js-->
+              </div>
+            </div>
+            <div class="cart-delete" id="cart-delete">
+              <img class="cart-delete-btn" id="cart-delete-btn" src="/images/icon-delete.svg" alt="remove">
+            </div>
+          </div>
+          <div class="cart-checkout" id="cart-checkout">
+            <button class="cart-checkout-btn" id="cart-checkout-btn">
+              Checkout
+            </button>
+          </div>
         </div>
       </div>
+      
     </header>
 
     <main>

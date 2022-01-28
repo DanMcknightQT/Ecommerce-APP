@@ -45,9 +45,6 @@ let cartQuantity = 0;
                     `;
                     $('#gallery').append(galleryBox);
 
-                    let mainImageBox=`
-
-                    `;
 
                     /* display shoe company */
                     let shoeCompanyBox = `
@@ -57,7 +54,7 @@ let cartQuantity = 0;
 
                     /*display shoe name info */
                     let shoeNameBox = `
-                        <p>`+shoeData.shoes[0].name+`</p>
+                        <p id="name">`+shoeData.shoes[0].name+`</p>
                     `;
                     $('#shoe-name').append(shoeNameBox);
 
@@ -91,6 +88,24 @@ let cartQuantity = 0;
                         <p class="prod-quantity" id="prod-quantity">`+0+`</p>
                     `;
                     $('#quantity-num').append(quantityMainBox);
+
+                    /* cart window*/
+                    let cartThumbnail=`
+                    <img class="cart-img-thumbnail" src="/images/image-product-1-thumbnail.jpg" alt="img">
+                    `;
+                    $('#cart-img').append(cartThumbnail);
+
+                    let itemName=`
+                        <p class="cart-item-name-text" id="cart-item-name-text">`+shoeData.shoes[0].name+`</p>
+                    `;
+                    $('#cart-item-name').append(itemName);
+
+                    let itemPrice=`
+                        <p class="cart-price-text" id="cart-price-text">$`+discountPriceCalculated+`</p>
+                    `;
+                    $('#cart-price').append(itemPrice);
+
+                    
             },
             error:function(error){
                 console.log(error);
@@ -131,7 +146,7 @@ let cartQuantity = 0;
             document.getElementById("prod-quantity").innerHTML=quantity;
         }
         qtyReset();
-        document.getElementById("item-qty-number").innerHTML=cartQuantity; 
+        document.getElementById("cartQty").innerHTML=cartQuantity; 
     })
 
 })();
@@ -246,22 +261,28 @@ function openCartWindow() {
     let cartWindowelement = document.getElementById('cart-window');
     cartWindowelement.classList.remove('hidden');
     
+    console.log(cartQuantity, "cart qty");
     //populating cart window information
     if(cartQuantity==0){     
         let emptyCart = `
             <p class="empty-text">Your cart is empty.</p>
         `;
-        $('#empty-text').empty();
-        $('#empty-text').append(emptyCart);
+        $('#cart-empty').empty();
+        $('#cart-empty').append(emptyCart);
 
-        let cartElement=document.getElementById("cart-items");
+        let cartElement=document.getElementById("cart-info");
         cartElement.className += " hidden";
-        let emptyCartElement=document.getElementById("cart-checkout-btn");
+        let emptyCartElement=document.getElementById("cart-checkout");
         emptyCartElement.className += " hidden";
     }else{
-        let cartImg = `
-            <img class="cart-image" src="/images/image-product-1-thumbnail.jpg" alt="img">`;
-        $('#cart-item-img').append(cartImg);
+        
+        let price= 125;
+        let cartTotal = price*cartQuantity;
+        let cartTotalPrice=`
+            <p class="cart-total-text" id="cart-total-text">$`+cartTotal+`</p>
+        `;
+        $('#cart-total').append(cartTotalPrice);
+        
     }
 
 } 
