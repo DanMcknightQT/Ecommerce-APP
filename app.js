@@ -4,10 +4,9 @@ const jsonEXT = ".json";
 /* Buttons */
 const $addBtn = $('#plus-btn');
 const $minusBtn = $('#minus-btn');
-const $btnImage1 = $('#btn-image1');
-const $btnImage2 = $('#btn-image2');
-const $btnImage3 = $('#btn-image3');
-const $btnImage4 = $('#btn-image4');
+
+
+
 
 (function(){
     // /* this code is only to test scaleability (only keep one uncommented) */
