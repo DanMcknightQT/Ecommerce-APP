@@ -245,10 +245,19 @@ function closeNav() {
 
 //Functions to open and close cart window
 function openCartWindow() {
-    document.getElementById("nav-overlay").style.width = "100%";
+    document.getElementById("cart-window").style.display = "grid";
 }
   
 function closeCartWindow() {
-    document.getElementById("nav-overlay").style.width = "0%";
+    document.getElementById("cart-window").style.display = "none";
+}
+
+//Functions to open and close desktop view lightbox
+function openLightBox() {
+    document.getElementById("lightBox").style.width = "100%";
+}
+  
+function closeCartWindow() {
+    document.getElementById("lightBox").style.width = "0%";
 }
 
