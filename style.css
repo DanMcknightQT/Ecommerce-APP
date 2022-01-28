@@ -132,6 +132,7 @@ img{
 }
 .cart-btn-container{
     padding: 1em 0em 0em 0em;
+
 }
 .add-to-cart{
     width: 100%;
@@ -176,7 +177,6 @@ img{
     cursor: pointer;
     border-radius: 50%;
 }
-
 
 /* cart window*/
 /*come back to edit this later*/
