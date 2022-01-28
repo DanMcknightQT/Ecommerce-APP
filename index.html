@@ -70,7 +70,7 @@
           </li>
         </ul>   
       </nav>
-      <div class="cart-icon" id="cart-icon">
+      <div class="cart-icon" id="cart-icon" onclick="openCartWindow()">
         <a href="#" class="cart" id="cart">
           <img src="images/icon-cart.svg" alt="cart" />
           <span class="cart-number">0</span>
@@ -81,14 +81,19 @@
           <img class="user" src="/images/image-avatar.png" alt="user">
         </a>
       </div>
-      <div class="cart-window" id="cart-window">
-        <p class="window-title">Cart</p>
+      <div class="cart-window hidden" id="cart-window">
+        <p class="window-title">
+          <img class="cartCloseBtn" onclick="closeCartWindow()" src="/images/icon-close.svg" alt="close">
+          Cart
+        </p>
         <div class="cart-info">
-            <p class="empty-text">Your cart is empty.</p>
-          <ul class="cart-items">
+            <div class="empty-text" id="empty-text">
+              <!--inserted from app.js-->
+            </div>
+          <ul class="cart-items" id="cart-items">
             <li class="cart-item">
-              <div class="cart-item-img">
-                <p>insert item picture here</p>
+              <div class="cart-item-img" id="cart-item-img">
+                <!--  -->
               </div>
               <div class="item-info">
                 <p class="item-name">insert item name from json</p>
@@ -103,7 +108,7 @@
               </button>
             </li>
           </ul>
-          <button type="button" class="btn btn-checkout">
+          <button type="button" class="btn btn-checkout" id="cart-checkout-btn">
             Checkout
           </button>
         </div>

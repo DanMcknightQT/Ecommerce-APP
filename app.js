@@ -127,7 +127,6 @@ let cartQuantity = 0;
         cartQuantity+=quantity;
         //function to reset product quantity in shopping buttons after add to cart is clicked
         function qtyReset(){
-            console.log("hi")
             quantity=0;
             document.getElementById("prod-quantity").innerHTML=quantity;
         }
@@ -244,17 +243,38 @@ function closeNav() {
 
 //Functions to open and close cart window
 function openCartWindow() {
-    document.getElementById("cart-window").style.display = "grid";
+    let cartWindowelement = document.getElementById('cart-window');
+    cartWindowelement.classList.remove('hidden');
+    
+    //populating cart window information
+    if(cartQuantity==0){     
+        let emptyCart = `
+            <p class="empty-text">Your cart is empty.</p>
+        `;
+        $('#empty-text').empty();
+        $('#empty-text').append(emptyCart);
+
+        let cartElement=document.getElementById("cart-items");
+        cartElement.className += " hidden";
+        let emptyCartElement=document.getElementById("cart-checkout-btn");
+        emptyCartElement.className += " hidden";
+    }else{
+        let cartImg = `
+            <img class="cart-image" src="/images/image-product-1-thumbnail.jpg" alt="img">`;
+        $('#cart-item-img').append(cartImg);
+    }
+
 } 
 function closeCartWindow() {
-    document.getElementById("cart-window").style.display = "none";
+    let cartWindowelement = document.getElementById('cart-window');
+    cartWindowelement.className += (' hidden');
 }
 
 //Functions to open and close desktop view lightbox
 function openLightBox() {
     document.getElementById("lightBox").style.width = "100%";
 }
-function closeCartWindow() {
+function closeLightBox() {
     document.getElementById("lightBox").style.width = "0%";
 }
 

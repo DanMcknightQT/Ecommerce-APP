@@ -229,6 +229,10 @@ img{
     display: grid;
 }
 
+.hidden{
+    display: none;
+}
+
 /*for full sized screen*/
 @media  screen and (min-width:1439px) {
     body{
